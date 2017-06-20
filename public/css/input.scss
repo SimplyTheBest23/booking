@@ -19,7 +19,7 @@ $s-color:#97CB52;
 $main-width:1170px;
 
 @mixin flight{
-	/*font-family: 'Rubik-Light',sans-serif;*/ 	
+	/*font-family: 'Rubik-Light',sans-serif;*/
 	font-family: 'OpenSans Light',Arial, sans-serif;
 }
 
@@ -63,28 +63,28 @@ $main-width:1170px;
 @mixin minus{
 	width: 20px;
 	height: 20px;
-	display: inline-block;	
+	display: inline-block;
 	background: url('../img/minus.svg');
 }
 
 @mixin re{
 	width: 22px;
 	height: 20px;
-	display: inline-block;	
+	display: inline-block;
 	background: url('../img/re.png');
 }
 
 @mixin radion{
 	width: 20px;
 	height: 20px;
-	display: inline-block;	
+	display: inline-block;
 	background: url('../img/check_in.svg');
 }
 
 @mixin radioff{
 	width: 20px;
 	height: 20px;
-	display: inline-block;	
+	display: inline-block;
 	background: url('../img/check_out.svg');
 }
 
@@ -205,7 +205,7 @@ header{
 				float: left;
 			}
 		}
-	
+
 		>a{
 			margin:2px 0 8px 15px;
 		}
@@ -282,7 +282,7 @@ div.slider{
 				@include fmedium;
 				font-weight: 500;
 			}
-			
+
 			div.check{
 				label{
 					display: block;
@@ -443,10 +443,10 @@ div#booking{
 		empty-cells: show;
 		border-spacing: 1px;
 		tbody{
-			
+
 		}
 		tr{
-			
+
 				padding: 0;
 				margin: 0;
 			th{
@@ -511,9 +511,15 @@ div#view_feed{
 			overflow-y: scroll;
 			span.plus{
 				@include plus;
+                margin: 0 10px -5px 10px;
 			}
 			span.minus{
 				@include minus;
+                margin: 0 10px -5px 10px;
+			}
+            span.re{
+				@include re;
+                margin: 0 10px -5px 10px;
 			}
 		}
 		p:last-of-type{
@@ -629,7 +635,7 @@ div.add-hotel{
                 font-weight: normal;
                 text-align: center;
                 padding: 0; margin: 0 auto;
-                display: block;              
+                display: block;
                 width: 230px;
             }
             ul:first-of-type{
@@ -653,7 +659,7 @@ div.add-hotel{
                     }
                 }
             }
-            input[type='text'], select{
+            input[type='text'], input[type='password'], select{
                 width: 270px;
                 display: block;
                 margin: 10px auto 0 auto;
@@ -750,7 +756,7 @@ div.add-hotel{
                 }
                 button{
                     @include button;
-                    margin-left: 23px;
+                    margin-left: 21px;
                 }
             }
             div.mixed3{
@@ -767,7 +773,7 @@ div.add-hotel{
                         &.right{
                             padding-left: 15px;
                         }
-                    }                    
+                    }
                     input[type='text']{
                         width: 70px;
                         display: inline-block;
@@ -923,6 +929,112 @@ main{
 	div.grey-hotel{
 		width: 740px;
 	}
+    section.user-info{
+        float: left;
+        @include fregular;
+        width: 270px;
+        font-size: 16px;
+        h2.small{
+            font-weight: 500;
+            font-size: 13px;
+            color:#A3A3A3;
+            margin: 26px 0 15px 0;
+        }
+        >p{
+            width: 100%;
+            height: 40px;
+            border-radius: 3px;
+            border: 1px #ADADAD solid;
+            line-height: 2.4;
+            padding-left: 10px;
+        }
+        input[type="text"]{
+            width:100%; height: 40px;
+            border-radius: 3px;
+            border: 1px #ADADAD solid;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #000;
+            padding-left: 10px;
+        }
+        >a, a:visited, a:hover{
+            color: #000;
+            text-decoration: none;
+            i{
+                color: #399DD0;
+            }
+        }
+        button{
+            @include but;
+            width: 170px;
+            margin-top: 30px;
+        }
+    }
+    section.adds-list{
+        float:left;
+        width: 870px;
+        margin-left: 30px;
+        ul.caption{
+			list-style: none;
+			margin: 22px 0 11px 0; padding: 0;
+			li{
+				@include fregular;
+				display: inline-block;
+				margin:0; padding: 0;
+				font-size: 13px;
+				color:#A3A3A3;
+				&:nth-child(1){
+					width: 300px;
+				}
+				&:nth-child(2){
+					width: 200px;
+				}
+				&:nth-child(3){
+					width: 200px;
+				}
+			}
+		}
+        aside{
+			@include end;
+			margin: 0 0 10px 0;
+			>div{
+				@include flight;
+				display: inline-block;
+				margin: 0 30px 10px 0; padding: 5px 10px;
+				font-size: 16px;
+				color:#555;
+				background-color: #fff;
+				border: 1px #939393 solid;
+				height: 40px;
+				float: left;
+				overflow: hidden;
+				&:nth-child(1){
+					width: 270px;
+					border-left: 1px #939393 solid;
+				}
+				&:nth-child(2){
+					width: 170px;
+				}
+				&:nth-child(3){
+					width: 170px;
+				}
+			}
+			>a.btn-default{
+				@include but;
+				float: right;
+				width: 170px;
+				height: 30px;
+                &:hover{
+            		background-color: #F7A010;
+            		color: #fff;
+            	}
+            	&:active{
+            		background-color: #399DD0;
+            		color: #fff;
+            	}
+			}
+		}
+    }
 	section.adds{
 		max-width:970px;
 		width:100%;
@@ -944,7 +1056,7 @@ main{
 				height: 190px;
 				overflow: hidden;
 				float: left;
-				>img.main-photo{
+				img.main-photo{
 					width: 100%;
 				}
 				>img.images{
@@ -1030,6 +1142,8 @@ main{
 					left: 335px;
 					bottom: 15px;
 					position: absolute;
+                    width: 24px;
+                    height: 26px;
 				}
 				>div{
 					position: absolute;
@@ -1102,47 +1216,46 @@ main{
 					width: 140px;
 					border:none;
 				}
-				img+div{
-					@include pop;
-				}
-				div.info-beach{
-					@include pop;
-					left: 390px;
-					width:150px;
-				}
-				img[alt='beach']:hover +div{
-					display: block;
-				}
-				div.info-wifi{
-					@include pop;
-					left: 525px;
-					width:55px;
-				}
-				img[alt='wi-fi']:hover +div{
-					display: block;
-				}
-				div.info-rooms{
-					@include pop;
-					left: 520px;
-					width:115px;
-				}
-				img[alt='home']:hover +div{
-					display: block;
-				}
-				img[alt='home']{
-					margin-top: -9px;
-				}
-				div.info-bath{
-					@include pop;
-					left: 630px;
-					width:180px;
-				}
-				img[alt='bath']:hover +div{
-					display: block;
-				}
-				img[alt='beach'], img[alt='marker'], img[alt='phone']{
-					margin-left: 0;
-				}
+                ul{
+                    margin: 0;
+                    padding: 0;
+                    li{
+                        display: inline-block;
+                        margin: 0 0 10px 0;
+                        position: relative;
+                        img+div{
+        					@include pop;
+                            position: absolute;
+                            left: 0;
+                            top: 25px;
+        				}
+                        img:hover+div{
+                            display: block;
+                        }
+                        div.info-beach{
+        					width:150px;
+        				}
+        				div.info-wifi{
+        					width:55px;
+        				}
+        				div.info-rooms{
+        					width:115px;
+        				}
+        				img[alt='home']{
+        					margin-top: -9px;
+        				}
+        				div.info-bath{
+        					width:180px;
+        				}
+                        div.info-lux{
+            				width:115px;
+            			}
+                    }
+                }
+
+				// img[alt='beach'], img[alt='marker'], img[alt='phone']{
+				// 	margin-left: 0;
+				// }
 				div.grey{
 					max-width:540px;
 					height: 0;
@@ -1157,48 +1270,37 @@ main{
 	section.rooms{
 		aside{
 			>div.content{
-				img[alt='bed']{
-					margin-left:0;
-				}
-				img[alt='bed']:hover+div{
-					display: block;
-					top: 80px;
-				}
-				img[alt='wifi']:hover+div{
-					display: block;
-					top: 80px;
-					left: 445px;
-				}
-				img[alt='bath']:hover+div{
-					display: block;
-					top: 80px;
-					left: 500px;
-					width: 110px;
-				}
-				img[alt='wc']:hover+div{
-					display: block;
-					top: 80px;
-					left: 550px;
-					width: 120px;
-				}
-				img[alt='cond']:hover+div{
-					display: block;
-					top: 80px;
-					left: 605px;
-					width: 100px;
-				}
-				img[alt='tv']:hover+div{
-					display: block;
-					top: 80px;
-					left: 670px;
-					width: 90px;
-				}
-				img[alt='kitchen']:hover+div{
-					display: block;
-					top: 80px;
-					left: 720px;
-					width: 60px;
-				}
+                ul{
+                    margin: 0;
+                    padding: 0;
+                    li{
+                        display: inline-block;
+                        margin: 0 0 10px 0;
+                        position: relative;
+                        img+div{
+        					@include pop;
+                            position: absolute;
+                            left: 0;
+                            top: 25px;
+        				}
+                        img:hover+div{
+                            display: block;
+                            width: 100px;
+                        }
+                        img[alt='bed']:hover+div{
+        					width: 180px;
+        				}
+                        img[alt='bath']:hover+div{
+        					width: 120px;
+        				}
+                        img[alt='wc']:hover+div{
+        					width: 140px;
+        				}
+                        img[alt='kitchen']:hover+div{
+        					width: 80px;
+        				}
+                    }
+                }
 				span.phone{
 					margin-top: 25px;
 					margin-bottom: 5px;
@@ -1292,11 +1394,9 @@ main{
 					}
 				}
 			}
-			
-
 			article{
 				margin-top: 35px;
-				color: #828282;
+				color: #444;
 				line-height: 1.5;
 				font-size: 14px;
 			}
@@ -1305,7 +1405,7 @@ main{
 			@include end;
 			background-color: #fff;
 			width: 670px;
-			height: 267px;
+			height: 300px;
 			margin-top: 40px;
 			padding: 15px 30px 20px 30px;
 			h2{
@@ -1326,6 +1426,24 @@ main{
 			input#form_name{
 				margin-right: 6px;
 			}
+            h3{
+                @include flight;
+                font-size: 14px;
+                line-height: 1.5;
+                input[type='radio']{
+        			display: none;
+        		}
+        		input[type='radio']+div.check{
+        			@include radioff;
+        			margin-bottom: -5px;
+                    margin-left: 30px;
+        		}
+        		input[type='radio']:checked+div.check{
+        			@include radion;
+        			margin-bottom: -5px;
+                    margin-left: 30px;
+        		}
+            }
 			textarea{
 				color: #828282;
 				text-align: left;
@@ -1349,53 +1467,50 @@ main{
 		}
 		aside.room-info{
 			>div{
-				img+div{
-					@include pop;
-					width: inherit;
-				}
-				img[alt='bed']{
-					margin-left: 0;
-				}
-				img[alt='bed']:hover+div{
-					display: block;
-					left: 0;
-					top: 580px;
-				}
-				img[alt='wifi']:hover+div{
-					display: block;
-					left: 65px;
-					top: 580px;
-				}
-				img[alt='bath']:hover+div{
-					display: block;
-					left: 150px;
-					top: 580px;
-					width: inherit;
-				}
-				img[alt='wc']:hover+div{
-					display: block;
-					left: 220px;
-					top: 580px;
-					width: inherit;
-				}
-				img[alt='cond']:hover+div{
-					display: block;
-					left: 295px;
-					top: 580px;
-					width: inherit;
-				}
-				img[alt='tv']:hover+div{
-					display: block;
-					left: 385px;
-					top: 580px;
-					width: inherit;
-				}
-				img[alt='kitchen']:hover+div{
-					display: block;
-					left: 460px;
-					top: 580px;
-					width: inherit;
-				}
+                ul{
+                    margin: 0;
+                    padding: 0;
+                    li{
+                        display: inline-block;
+                        margin: 0 0 10px 0;
+                        position: relative;
+                        width: 84px;
+                        img+div{
+        					@include pop;
+                            position: absolute;
+                            left: 0;
+                            top: 25px;
+        				}
+                        img:hover+div{
+                            display: block;
+                            z-index:2;
+                        }
+                        img[alt='bed']{
+        					margin-left: 0;
+        				}
+                        img[alt='bed']:hover+div{
+        					width: 190px;
+        				}
+                        img[alt='bath']:hover+div{
+        					width: 110px;
+        				}
+        				img[alt='wc']:hover+div{
+        					width: 130px;
+        				}
+        				img[alt='cond']:hover+div{
+        					width: 100px;
+        				}
+        				img[alt='tv']:hover+div{
+        					width: 100px;
+        				}
+        				img[alt='kitchen']:hover+div{
+        					width: 70px;
+        				}
+                        img[alt='wifi']:hover+div{
+        					width: 60px;
+        				}
+                    }
+                }
 			}
 		}
 		aside.feeds{
@@ -1501,6 +1616,9 @@ main{
 				border-radius: 4px;
 				overflow: hidden;
 				margin: 0 0 10px 0;
+                a{
+
+                }
 				img{
 					width:100%;
 				}
@@ -1511,7 +1629,7 @@ main{
 			div.right{
 				float:right;
 			}
-			
+
 		}
 		>p{
 			height: 60px;
@@ -1670,9 +1788,9 @@ main{
 					}
 				}
 			}
-			
+
 		}
-		
+
 		aside.info1{
 			width: 300px;
 			padding: 0 30px 0 0;
@@ -1694,7 +1812,7 @@ main{
 					list-style: none;
 				}
 			}
-			
+
 			input.col-xs-12{
 				@include flight;
 				height: 40px;
@@ -1705,7 +1823,7 @@ main{
 				text-align: left;
 				color: #323931;
 			}
-			
+
 			input[type='radio']{
 				display: none;
 			}
@@ -1734,7 +1852,7 @@ main{
 		}
 		aside.map{
 			width: 370px;
-			margin: 0 30px 0px 0px;	
+			margin: 0 30px 0px 0px;
 			div.map{
 				border: 1px #DBDBDB solid;
 				border-radius: 4px;
@@ -1812,12 +1930,22 @@ main{
 					border-radius: 5px;
 					margin-right: 28px;
 					overflow: hidden;
+                    position: relative;
 					img{
 						width: 100%;
 					}
 					&:last-child{
 						/*margin: 0;*/
 					}
+                    i{
+                        position: absolute;
+                        font-size: 50px;
+                        color: #fff;
+                        top: 32px;
+                        left: 70px;
+                        cursor: pointer;
+                        display: none;
+                    }
 				}
 			}
 		}
@@ -1906,7 +2034,7 @@ main{
 				background-color: #97CB52;
 			}
 		}
-				
+
 	}
 	section.hotel-about{
 		@include end;
@@ -1943,7 +2071,7 @@ main{
 		}
 	}
 	section.room-edit{
-		float: left;		
+		float: left;
 		margin: 25px 0 0 0;
 		width: 800px;
 		@include end;
@@ -1960,7 +2088,7 @@ main{
 			height: 240px;
 		}
 		aside.room-list{
-			height: 100%;
+			height: auto;
 			width: 200px;
 			h1{
 				@include roomSmall;
@@ -1978,6 +2106,7 @@ main{
 					color:  #999;
 					text-align: center;
 					line-height: 2.2em;
+                    cursor: pointer;
 					&.active{
 						color: #000;
 						position: relative;
@@ -2051,7 +2180,7 @@ main{
 		aside.booking{
 			width: 275px;
 			h2{
-				@include roomSmall;	
+				@include roomSmall;
 			}
 		}
 		aside.features{
@@ -2119,6 +2248,7 @@ main{
 			@include roomSmall;
 		}
 		div{
+            position: relative;
 			width: 170px; height: 125px;
 			border-radius: 5px;
 			overflow: hidden;
@@ -2126,6 +2256,15 @@ main{
 			img{
 				width: 100%;
 			}
+            i{
+                position: absolute;
+                font-size: 50px;
+                color: #fff;
+                top: 32px;
+                left: 70px;
+                cursor: pointer;
+                display: none;
+            }
 		}
 		div:nth-of-type(odd){
 			float: left;
@@ -2133,6 +2272,9 @@ main{
 		div:nth-of-type(even){
 			float: right;
 		}
+        menu{
+            float: left;padding: 0; width: 100%;
+        }
 		a{
 			@include but;
 			width: 170px;
@@ -2244,7 +2386,7 @@ main{
 					padding: 15px 0;
 					text-align: center;
 				}
-				
+
 				&.feed{
 					position: relative;
 					p{
@@ -2254,6 +2396,18 @@ main{
 					}
 					span.plus{
 						@include plus;
+						position: absolute;
+						top: 17px;
+						left: 5px;
+					}
+                    span.minus{
+						@include minus;
+						position: absolute;
+						top: 17px;
+						left: 5px;
+					}
+                    span.re{
+						@include re;
 						position: absolute;
 						top: 17px;
 						left: 5px;
@@ -2369,7 +2523,7 @@ section.other, section.history{
 			border-radius: 5px 5px  0 0;
 			overflow: hidden;
 			img{
-				widh: 270px;
+				width: 270px;
 			}
 		}
 		div.content{
@@ -2524,7 +2678,7 @@ footer{
 				float: right;
 			}
 		}
-		
+
 	}
 	main{
 		max-width: 1170px;
@@ -2582,7 +2736,7 @@ footer{
 			margin-top: 82px;
 			margin-left: -384px;
 			div.stick{
-				
+
 			}
 			div.filter{
 				width:185px;
@@ -2632,6 +2786,39 @@ footer{
 		div.main_head{
 			width: 768px;
 		}
+        section.user-info{
+            float:none;
+            margin: 0 auto;
+            >button{
+                width: 100%;
+            }
+        }
+        section.adds-list{
+            width: 768px;
+            float: none;
+            margin: 0 auto;
+            ul.caption{
+    			li{
+    				&:nth-child(1){
+    					width: 276px;
+    				}
+    				&:nth-child(2){
+    					width: 178px;
+    				}
+    				&:nth-child(3){
+    					width: 200px;
+    				}
+    			}
+    		}
+            aside{
+                div{
+                    margin-right: 10px;
+                }
+                >a.btn-default{
+                    width: 120px;
+                }
+            }
+        }
 		section.adds{
 			width:768px;
 			float:none;
@@ -2663,7 +2850,7 @@ footer{
 						left: 230px;
 					}
 				}
-				div.content{
+				/*div.content{
 					width:498px;
 					div.info-beach{
 						left: 280px;
@@ -2684,8 +2871,8 @@ footer{
 					div.grey{
 						width:470px;
 					}
-				}
-		
+				}*/
+
 			}
 		}
 		section.rooms{
@@ -2693,45 +2880,6 @@ footer{
 				>div.content{
 					img[alt='bed']{
 						margin-left:0;
-					}
-					img[alt='bed']:hover+div{
-						display: block;
-						top: 80px;
-					}
-					img[alt='wifi']:hover+div{
-						display: block;
-						top: 80px;
-						left: 335px;/*445*/
-					}
-					img[alt='bath']:hover+div{
-						display: block;
-						top: 80px;
-						left: 390px;
-						width: 110px;
-					}
-					img[alt='wc']:hover+div{
-						display: block;
-						top: 80px;
-						left: 440px;
-						width: 120px;
-					}
-					img[alt='cond']:hover+div{
-						display: block;
-						top: 80px;
-						left: 495px;
-						width: 100px;
-					}
-					img[alt='tv']:hover+div{
-						display: block;
-						top: 80px;
-						left: 560px;
-						width: 90px;
-					}
-					img[alt='kitchen']:hover+div{
-						display: block;
-						top: 80px;
-						left: 610px;
-						width: 60px;
 					}
 				}
 			}
@@ -2743,7 +2891,7 @@ footer{
 			max-width: 450px;
 			aside.hotel-info, aside.room-info{
 				>div{
-					
+
 				}
 				form#feed_form{
 					max-width: 450px;
@@ -2760,41 +2908,15 @@ footer{
 			aside.room-info{
 				>div{
 					img{
-						margin: 0 5px 0 25px;
+						margin: 0 5px 0 0;
 					}
-					img[alt='bed']{
-						margin-left: 0;
-					}
-					img[alt='bed']:hover+div{
-						top: 420px;
-					}
-					img[alt='wifi']:hover+div{
-						left: 55px;
-						top: 420px;
-					}
-					img[alt='bath']:hover+div{
-						left: 130px;
-						top: 420px;
-					}
-					img[alt='wc']:hover+div{
-						left: 195px;
-						top: 420px;
-					}
-					img[alt='cond']:hover+div{
-						display: block;
-						left: 260px;
-						top: 420px;
-					}
-					img[alt='tv']:hover+div{
-						display: block;
-						left: 335px;
-						top: 420px;
-					}
-					img[alt='kitchen']:hover+div{
-						display: block;
-						left: 400px;
-						top: 420px;
-					}
+                    ul{
+                        li{
+                            img[alt='bed']{
+                                margin-left: 0;
+                            }
+                        }
+                    }
 				}
 			}
 			aside.feeds{
@@ -2856,7 +2978,7 @@ footer{
 				height: auto;
 			}
 		}
-		
+
 		section.hotel-photos{
 			aside.photos{
 				width: 596px;
@@ -2923,7 +3045,7 @@ footer{
 				margin-right: 20px;
 			}
 			a:nth-of-type(even){
-				float: none;	
+				float: none;
 			}
 		}
 
@@ -3040,7 +3162,7 @@ footer{
 						height: 14px;
 						border-left: 1px #eee solid;
 						margin-left: 18px;
-						
+
 					}
 					&:last-of-type{
 						&:after{
@@ -3126,12 +3248,70 @@ footer{
 		}
 	}
 
+	div.add-hotel{
+		div.modal-body{
+			textarea{
+				display: block;
+				width: 300px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			div.select-box{
+				width: 275px;
+				margin-left: auto;
+				margin-right: auto;
+				select.left, input.left{
+					margin-right: 0;
+				}
+			}
+			div.mixed1{
+				width: 220px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			div.mixed2{
+				button{
+					display: block;
+					margin-left: auto;
+					margin-right: auto;
+					margin-top: 15px;
+				}
+			}
+			div.mixed3{
+				width: 300px;
+				margin-left: auto;
+				margin-right: auto;
+				label{
+					span.right{
+						padding-left: 0;
+					}
+				}
+			}
+			div.room-check{
+				width: 300px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+		div.modal-footer{
+			button.btn{
+				display: block;
+				float: none;
+				margin: 10px auto;
+				&:last-of-type{
+					margin: 10px auto;
+					float: none !important;
+				}
+			}
+		}
+	}
+
 	div.slider{
 		width: 100%;
 		position: relative;
 		background: inherit;
 		height: 415px;
-		
+
 		dialog{
 			width: 360px;
 			height: 321px;
@@ -3140,7 +3320,7 @@ footer{
 			div.stick{
 				display: none;
 			}
-			
+
 			div.filter{
 				width:179px;
 				max-width: 179px;
@@ -3171,10 +3351,10 @@ footer{
 	}
 
 	div#view_feed{
-		
+
 		div.modal-footer{
 			button{
-								
+
 				&:last-of-type{
 					margin-left: 0;
 					margin-top: 10px;
@@ -3245,7 +3425,34 @@ footer{
 		>div.rooms-line1, div.rooms-line2{
 			top:65px;
 		}
-
+        section.adds-list{
+            margin-top: 30px;
+            width: 100%;
+            ul.caption{
+                display: none;
+            }
+            aside.add{
+                width: 100%;
+                margin-bottom: 30px;
+                div{
+                    margin: 2px 0 0;
+                    display: block;
+                    float: none;
+                    &:nth-child(1){
+                        width: 100%;
+                    }
+                    &:nth-child(2){
+                        width: 100%;
+                    }
+                    &:nth-child(3){
+                        width: 100%;
+                    }
+                }
+                >a.btn-default{
+                    width: 100%;
+                }
+            }
+        }
 		section.adds{
 			width:360px;
 			margin: 0 auto;
@@ -3307,27 +3514,8 @@ footer{
 					h3{
 						margin-left: 0px;
 					}
-					img{
-						margin: 0 10px 0 90px;
-					}
-						img[alt='beach'], img[alt='marker'], img[alt='phone'], img[alt='bath']{
+					img[alt='beach'], img[alt='marker'], img[alt='phone'], img[alt='bath']{
 						margin-left: 0;
-					}
-					div.info-beach{
-						left: 0;
-						top: 305px;
-					}
-					div.info-wifi{
-						left: 153px;
-						top: 305px;
-					}
-					div.info-rooms{
-						left: 215px;
-						top: 305px;
-					}
-					div.info-bath{
-						left: 5px;
-						top: 325px;
 					}
 					article{
 						height: 60px;
@@ -3349,7 +3537,7 @@ footer{
 		}
 		section.rooms{
 			aside{
-				height: 500px;/*480px;*/
+				height: 550px;/*480px;*/
 				>div.content{
 					img{
 						margin-right: 1px;
@@ -3357,33 +3545,6 @@ footer{
 					}
 					img[alt='bath']{
 						margin-left: 12px;
-					}
-					img[alt='bed']:hover+div{
-						top: 300px;
-					}
-					img[alt='wifi']:hover+div{
-						top: 300px;
-						left: 50px;
-					}
-					img[alt='bath']:hover+div{
-						top: 300px;
-						left: 100px;
-					}
-					img[alt='wc']:hover+div{
-						top: 300px;
-						left: 150px;
-					}
-					img[alt='cond']:hover+div{
-						top: 300px;
-						left: 195px;
-					}
-					img[alt='tv']:hover+div{
-						top: 300px;
-						left: 250px;
-					}
-					img[alt='kitchen']:hover+div{
-						top: 300px;
-						left: 300px;
 					}
 				}
 			}
@@ -3400,7 +3561,7 @@ footer{
 				>div{
 					/*position: absolute;
 					top: 1800px;*/
-					
+
 					article{
 						/*position: absolute;
 						top: 700px;*/
@@ -3416,45 +3577,19 @@ footer{
 			aside.room-info{
 				>div{
 					img{
-						margin: 0 2px 0 12px;
+						margin: 0 2px 0 0px;
 					}
-					img[alt='bed']{
-						margin-left: 0;
-					}
-					img[alt='bath']{
-						margin: 0 2px 0 12px;	
-					}
-					img[alt='bed']:hover+div{
-						top: 350px;
-					}
-					img[alt='wifi']:hover+div{
-						left: 40px;
-						top: 350px;
-					}
-					img[alt='bath']:hover+div{
-						left: 100px;
-						top: 350px;
-					}
-					img[alt='wc']:hover+div{
-						left: 150px;
-						top: 350px;
-					}
-					img[alt='cond']:hover+div{
-						display: block;
-						left: 200px;
-						top: 350px;
-					}
-					img[alt='tv']:hover+div{
-						display: block;
-						left: 255px;
-						top: 350px;
-					}
-					img[alt='kitchen']:hover+div{
-						display: block;
-						left: 310px;
-						top: 350px;
-					}
-				}
+                    ul{
+                        li{
+                            img[alt='bed']{
+        						margin-left: 0;
+        					}
+        					img[alt='bath']{
+        						margin: 0 2px 0 12px;
+        					}
+                        }
+                    }
+			    }
 			}
 			aside.feeds{
 				/*position: absolute;
@@ -3545,7 +3680,7 @@ footer{
 				}
 				label.text{
 					width: 220px;
-				}	
+				}
 			}
 			aside.other1, aside.other2, aside.other3{
 				width: 360px;
@@ -3690,7 +3825,7 @@ footer{
 					&:nth-child(5){
 						border-left: 1px #939393 solid;
 					}
-					
+
 				}
 				>button{
 						/*margin-top: 15px;*/
@@ -3700,7 +3835,7 @@ footer{
 			}
 		}
 	}
-	
+
 	ul.pagg{
 		margin: 30px auto;
 	}

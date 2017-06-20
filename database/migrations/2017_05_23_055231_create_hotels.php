@@ -33,11 +33,11 @@ class CreateHotels extends Migration
             $table->string('about');
             $table->smallInteger('price');
             $table->unsignedInteger('user_id');
-            $table->string('foto1');
-            $table->string('foto2');
-            $table->string('foto3');
-            $table->string('foto4');
-            $table->string('foto5');
+            $table->string('foto1')->nullable();
+            $table->string('foto2')->nullable();
+            $table->string('foto3')->nullable();
+            $table->string('foto4')->nullable();
+            $table->string('foto5')->nullable();
             $table->tinyInteger('price_type');
             $table->unsignedInteger('to_beach');
             $table->unsignedInteger('to_shop');

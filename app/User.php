@@ -15,9 +15,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'role', 'password',
     ];
-
+    protected $table = 'users';
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -26,4 +26,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    static function getCurrent()
+    {
+        if (session('user_id')){
+            $user = \DB::table('users')->where('id','=',session('user_id'))->first();
+            $user->phone =  \DB::table('phones')->where('user_id','=',session('user_id'))->value('phone');
+        } else {
+            $user = false;
+        }
+        return $user;
+    }
 }

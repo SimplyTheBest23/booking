@@ -324,12 +324,20 @@ div#view_feed div.modal-body p:first-of-type {
     width: 20px;
     height: 20px;
     display: inline-block;
-    background: url("../img/plus.svg"); }
+    background: url("../img/plus.svg");
+    margin: 0 10px -5px 10px; }
   div#view_feed div.modal-body p:first-of-type span.minus {
     width: 20px;
     height: 20px;
     display: inline-block;
-    background: url("../img/minus.svg"); }
+    background: url("../img/minus.svg");
+    margin: 0 10px -5px 10px; }
+  div#view_feed div.modal-body p:first-of-type span.re {
+    width: 22px;
+    height: 20px;
+    display: inline-block;
+    background: url("../img/re.png");
+    margin: 0 10px -5px 10px; }
 div#view_feed div.modal-body p:last-of-type {
   height: 140px;
   overflow-y: scroll; }
@@ -417,7 +425,7 @@ div.add-hotel div.modal-body ul:first-of-type {
     div.add-hotel div.modal-body ul:first-of-type li.active {
       color: #fff;
       background-color: #97CB52; }
-div.add-hotel div.modal-body input[type='text'], div.add-hotel div.modal-body select {
+div.add-hotel div.modal-body input[type='text'], div.add-hotel div.modal-body input[type='password'], div.add-hotel div.modal-body select {
   width: 270px;
   display: block;
   margin: 10px auto 0 auto;
@@ -568,7 +576,7 @@ div.add-hotel div.modal-body div.mixed2 {
     color: #97CB52;
     line-height: -0.5;
     background-color: #fff;
-    margin-left: 23px; }
+    margin-left: 21px; }
     div.add-hotel div.modal-body div.mixed2 button:hover {
       color: #fff;
       background-color: #97CB52; }
@@ -814,6 +822,131 @@ main {
     width: 740px; }
   main div.grey-hotel {
     width: 740px; }
+  main section.user-info {
+    float: left;
+    /*font-family: 'Rubik-Regular',sans-serif;*/
+    font-family: 'OpenSans Regular',Arial, sans-serif;
+    width: 270px;
+    font-size: 16px; }
+    main section.user-info h2.small {
+      font-weight: 500;
+      font-size: 13px;
+      color: #A3A3A3;
+      margin: 26px 0 15px 0; }
+    main section.user-info > p {
+      width: 100%;
+      height: 40px;
+      border-radius: 3px;
+      border: 1px #ADADAD solid;
+      line-height: 2.4;
+      padding-left: 10px; }
+    main section.user-info input[type="text"] {
+      width: 100%;
+      height: 40px;
+      border-radius: 3px;
+      border: 1px #ADADAD solid;
+      margin-bottom: 10px;
+      font-size: 16px;
+      color: #000;
+      padding-left: 10px; }
+    main section.user-info > a, main section.user-info a:visited, main section.user-info a:hover {
+      color: #000;
+      text-decoration: none; }
+      main section.user-info > a i, main section.user-info a:visited i, main section.user-info a:hover i {
+        color: #399DD0; }
+    main section.user-info button {
+      /*font-family: 'Rubik-Medium',sans-serif;*/
+      font-family: 'OpenSans Bold',Arial, sans-serif;
+      font-size: 14px;
+      display: block;
+      width: 100%;
+      margin-top: 8px;
+      height: 30px;
+      line-height: 1;
+      background-color: #E7E7E7;
+      color: #828282;
+      width: 170px;
+      margin-top: 30px; }
+      main section.user-info button:hover {
+        background-color: #F7A010;
+        color: #fff; }
+      main section.user-info button:active {
+        background-color: #399DD0;
+        color: #fff; }
+  main section.adds-list {
+    float: left;
+    width: 870px;
+    margin-left: 30px; }
+    main section.adds-list ul.caption {
+      list-style: none;
+      margin: 22px 0 11px 0;
+      padding: 0; }
+      main section.adds-list ul.caption li {
+        /*font-family: 'Rubik-Regular',sans-serif;*/
+        font-family: 'OpenSans Regular',Arial, sans-serif;
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        font-size: 13px;
+        color: #A3A3A3; }
+        main section.adds-list ul.caption li:nth-child(1) {
+          width: 300px; }
+        main section.adds-list ul.caption li:nth-child(2) {
+          width: 200px; }
+        main section.adds-list ul.caption li:nth-child(3) {
+          width: 200px; }
+    main section.adds-list aside {
+      margin: 0 0 10px 0; }
+      main section.adds-list aside:after {
+        content: '';
+        display: block;
+        clear: both; }
+      main section.adds-list aside > div {
+        /*font-family: 'Rubik-Light',sans-serif;*/
+        font-family: 'OpenSans Light',Arial, sans-serif;
+        display: inline-block;
+        margin: 0 30px 10px 0;
+        padding: 5px 10px;
+        font-size: 16px;
+        color: #555;
+        background-color: #fff;
+        border: 1px #939393 solid;
+        height: 40px;
+        float: left;
+        overflow: hidden; }
+        main section.adds-list aside > div:nth-child(1) {
+          width: 270px;
+          border-left: 1px #939393 solid; }
+        main section.adds-list aside > div:nth-child(2) {
+          width: 170px; }
+        main section.adds-list aside > div:nth-child(3) {
+          width: 170px; }
+      main section.adds-list aside > a.btn-default {
+        /*font-family: 'Rubik-Medium',sans-serif;*/
+        font-family: 'OpenSans Bold',Arial, sans-serif;
+        font-size: 14px;
+        display: block;
+        width: 100%;
+        margin-top: 8px;
+        height: 30px;
+        line-height: 1;
+        background-color: #E7E7E7;
+        color: #828282;
+        float: right;
+        width: 170px;
+        height: 30px; }
+        main section.adds-list aside > a.btn-default:hover {
+          background-color: #F7A010;
+          color: #fff; }
+        main section.adds-list aside > a.btn-default:active {
+          background-color: #399DD0;
+          color: #fff; }
+        main section.adds-list aside > a.btn-default:hover {
+          background-color: #F7A010;
+          color: #fff; }
+        main section.adds-list aside > a.btn-default:active {
+          background-color: #399DD0;
+          color: #fff; }
   main section.adds {
     max-width: 970px;
     width: 100%;
@@ -839,7 +972,7 @@ main {
         height: 190px;
         overflow: hidden;
         float: left; }
-        main section.adds aside div.photo > img.main-photo {
+        main section.adds aside div.photo img.main-photo {
           width: 100%; }
         main section.adds aside div.photo > img.images {
           position: absolute;
@@ -910,7 +1043,9 @@ main {
           margin: 0;
           left: 335px;
           bottom: 15px;
-          position: absolute; }
+          position: absolute;
+          width: 24px;
+          height: 26px; }
         main section.book-adds aside div.photo > div, main section.rooms aside div.photo > div {
           position: absolute;
           width: 50px;
@@ -973,166 +1108,97 @@ main {
           text-indent: 0;
           width: 140px;
           border: none; }
-        main section.book-adds aside div.content img + div, main section.rooms aside div.content img + div {
-          height: 28px;
-          position: absolute;
-          top: 85px;
-          padding: 3px 10px;
-          background-color: #97CB52;
-          border-radius: 10px;
-          font-family: 'OpenSans Light',sans-serif;
-          color: #fff;
-          display: none;
-          box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
-          width: inherit; }
-          main section.book-adds aside div.content img + div:after, main section.rooms aside div.content img + div:after {
-            content: '';
-            display: block;
-            border: 8px transparent solid;
-            border-bottom: 8px #97CB52 solid;
-            width: 0;
-            height: 0;
-            margin-top: -35px; }
-        main section.book-adds aside div.content div.info-beach, main section.rooms aside div.content div.info-beach {
-          height: 28px;
-          position: absolute;
-          top: 85px;
-          padding: 3px 10px;
-          background-color: #97CB52;
-          border-radius: 10px;
-          font-family: 'OpenSans Light',sans-serif;
-          color: #fff;
-          display: none;
-          box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
-          width: inherit;
-          left: 390px;
-          width: 150px; }
-          main section.book-adds aside div.content div.info-beach:after, main section.rooms aside div.content div.info-beach:after {
-            content: '';
-            display: block;
-            border: 8px transparent solid;
-            border-bottom: 8px #97CB52 solid;
-            width: 0;
-            height: 0;
-            margin-top: -35px; }
-        main section.book-adds aside div.content img[alt='beach']:hover + div, main section.rooms aside div.content img[alt='beach']:hover + div {
-          display: block; }
-        main section.book-adds aside div.content div.info-wifi, main section.rooms aside div.content div.info-wifi {
-          height: 28px;
-          position: absolute;
-          top: 85px;
-          padding: 3px 10px;
-          background-color: #97CB52;
-          border-radius: 10px;
-          font-family: 'OpenSans Light',sans-serif;
-          color: #fff;
-          display: none;
-          box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
-          width: inherit;
-          left: 525px;
-          width: 55px; }
-          main section.book-adds aside div.content div.info-wifi:after, main section.rooms aside div.content div.info-wifi:after {
-            content: '';
-            display: block;
-            border: 8px transparent solid;
-            border-bottom: 8px #97CB52 solid;
-            width: 0;
-            height: 0;
-            margin-top: -35px; }
-        main section.book-adds aside div.content img[alt='wi-fi']:hover + div, main section.rooms aside div.content img[alt='wi-fi']:hover + div {
-          display: block; }
-        main section.book-adds aside div.content div.info-rooms, main section.rooms aside div.content div.info-rooms {
-          height: 28px;
-          position: absolute;
-          top: 85px;
-          padding: 3px 10px;
-          background-color: #97CB52;
-          border-radius: 10px;
-          font-family: 'OpenSans Light',sans-serif;
-          color: #fff;
-          display: none;
-          box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
-          width: inherit;
-          left: 520px;
-          width: 115px; }
-          main section.book-adds aside div.content div.info-rooms:after, main section.rooms aside div.content div.info-rooms:after {
-            content: '';
-            display: block;
-            border: 8px transparent solid;
-            border-bottom: 8px #97CB52 solid;
-            width: 0;
-            height: 0;
-            margin-top: -35px; }
-        main section.book-adds aside div.content img[alt='home']:hover + div, main section.rooms aside div.content img[alt='home']:hover + div {
-          display: block; }
-        main section.book-adds aside div.content img[alt='home'], main section.rooms aside div.content img[alt='home'] {
-          margin-top: -9px; }
-        main section.book-adds aside div.content div.info-bath, main section.rooms aside div.content div.info-bath {
-          height: 28px;
-          position: absolute;
-          top: 85px;
-          padding: 3px 10px;
-          background-color: #97CB52;
-          border-radius: 10px;
-          font-family: 'OpenSans Light',sans-serif;
-          color: #fff;
-          display: none;
-          box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
-          width: inherit;
-          left: 630px;
-          width: 180px; }
-          main section.book-adds aside div.content div.info-bath:after, main section.rooms aside div.content div.info-bath:after {
-            content: '';
-            display: block;
-            border: 8px transparent solid;
-            border-bottom: 8px #97CB52 solid;
-            width: 0;
-            height: 0;
-            margin-top: -35px; }
-        main section.book-adds aside div.content img[alt='bath']:hover + div, main section.rooms aside div.content img[alt='bath']:hover + div {
-          display: block; }
-        main section.book-adds aside div.content img[alt='beach'], main section.book-adds aside div.content img[alt='marker'], main section.book-adds aside div.content img[alt='phone'], main section.rooms aside div.content img[alt='beach'], main section.rooms aside div.content img[alt='marker'], main section.rooms aside div.content img[alt='phone'] {
-          margin-left: 0; }
+        main section.book-adds aside div.content ul, main section.rooms aside div.content ul {
+          margin: 0;
+          padding: 0; }
+          main section.book-adds aside div.content ul li, main section.rooms aside div.content ul li {
+            display: inline-block;
+            margin: 0 0 10px 0;
+            position: relative; }
+            main section.book-adds aside div.content ul li img + div, main section.rooms aside div.content ul li img + div {
+              height: 28px;
+              position: absolute;
+              top: 85px;
+              padding: 3px 10px;
+              background-color: #97CB52;
+              border-radius: 10px;
+              font-family: 'OpenSans Light',sans-serif;
+              color: #fff;
+              display: none;
+              box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+              width: inherit;
+              position: absolute;
+              left: 0;
+              top: 25px; }
+              main section.book-adds aside div.content ul li img + div:after, main section.rooms aside div.content ul li img + div:after {
+                content: '';
+                display: block;
+                border: 8px transparent solid;
+                border-bottom: 8px #97CB52 solid;
+                width: 0;
+                height: 0;
+                margin-top: -35px; }
+            main section.book-adds aside div.content ul li img:hover + div, main section.rooms aside div.content ul li img:hover + div {
+              display: block; }
+            main section.book-adds aside div.content ul li div.info-beach, main section.rooms aside div.content ul li div.info-beach {
+              width: 150px; }
+            main section.book-adds aside div.content ul li div.info-wifi, main section.rooms aside div.content ul li div.info-wifi {
+              width: 55px; }
+            main section.book-adds aside div.content ul li div.info-rooms, main section.rooms aside div.content ul li div.info-rooms {
+              width: 115px; }
+            main section.book-adds aside div.content ul li img[alt='home'], main section.rooms aside div.content ul li img[alt='home'] {
+              margin-top: -9px; }
+            main section.book-adds aside div.content ul li div.info-bath, main section.rooms aside div.content ul li div.info-bath {
+              width: 180px; }
+            main section.book-adds aside div.content ul li div.info-lux, main section.rooms aside div.content ul li div.info-lux {
+              width: 115px; }
         main section.book-adds aside div.content div.grey, main section.rooms aside div.content div.grey {
           max-width: 540px;
           height: 0;
           border-top: #D1D1D1 1px solid;
           display: inline-block;
           margin-left: 0; }
-  main section.rooms aside > div.content img[alt='bed'] {
-    margin-left: 0; }
-  main section.rooms aside > div.content img[alt='bed']:hover + div {
-    display: block;
-    top: 80px; }
-  main section.rooms aside > div.content img[alt='wifi']:hover + div {
-    display: block;
-    top: 80px;
-    left: 445px; }
-  main section.rooms aside > div.content img[alt='bath']:hover + div {
-    display: block;
-    top: 80px;
-    left: 500px;
-    width: 110px; }
-  main section.rooms aside > div.content img[alt='wc']:hover + div {
-    display: block;
-    top: 80px;
-    left: 550px;
-    width: 120px; }
-  main section.rooms aside > div.content img[alt='cond']:hover + div {
-    display: block;
-    top: 80px;
-    left: 605px;
-    width: 100px; }
-  main section.rooms aside > div.content img[alt='tv']:hover + div {
-    display: block;
-    top: 80px;
-    left: 670px;
-    width: 90px; }
-  main section.rooms aside > div.content img[alt='kitchen']:hover + div {
-    display: block;
-    top: 80px;
-    left: 720px;
-    width: 60px; }
+  main section.rooms aside > div.content ul {
+    margin: 0;
+    padding: 0; }
+    main section.rooms aside > div.content ul li {
+      display: inline-block;
+      margin: 0 0 10px 0;
+      position: relative; }
+      main section.rooms aside > div.content ul li img + div {
+        height: 28px;
+        position: absolute;
+        top: 85px;
+        padding: 3px 10px;
+        background-color: #97CB52;
+        border-radius: 10px;
+        font-family: 'OpenSans Light',sans-serif;
+        color: #fff;
+        display: none;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+        width: inherit;
+        position: absolute;
+        left: 0;
+        top: 25px; }
+        main section.rooms aside > div.content ul li img + div:after {
+          content: '';
+          display: block;
+          border: 8px transparent solid;
+          border-bottom: 8px #97CB52 solid;
+          width: 0;
+          height: 0;
+          margin-top: -35px; }
+      main section.rooms aside > div.content ul li img:hover + div {
+        display: block;
+        width: 100px; }
+      main section.rooms aside > div.content ul li img[alt='bed']:hover + div {
+        width: 180px; }
+      main section.rooms aside > div.content ul li img[alt='bath']:hover + div {
+        width: 120px; }
+      main section.rooms aside > div.content ul li img[alt='wc']:hover + div {
+        width: 140px; }
+      main section.rooms aside > div.content ul li img[alt='kitchen']:hover + div {
+        width: 80px; }
   main section.rooms aside > div.content span.phone {
     margin-top: 25px;
     margin-bottom: 5px;
@@ -1229,13 +1295,13 @@ main {
               margin-top: -33px; }
       main section.hotel-view aside.hotel-info article, main section.hotel-view aside.room-info article {
         margin-top: 35px;
-        color: #828282;
+        color: #444;
         line-height: 1.5;
         font-size: 14px; }
     main section.hotel-view #feed_form {
       background-color: #fff;
       width: 670px;
-      height: 267px;
+      height: 300px;
       margin-top: 40px;
       padding: 15px 30px 20px 30px; }
       main section.hotel-view #feed_form:after {
@@ -1258,6 +1324,27 @@ main {
         width: 300px; }
       main section.hotel-view #feed_form input#form_name {
         margin-right: 6px; }
+      main section.hotel-view #feed_form h3 {
+        /*font-family: 'Rubik-Light',sans-serif;*/
+        font-family: 'OpenSans Light',Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.5; }
+        main section.hotel-view #feed_form h3 input[type='radio'] {
+          display: none; }
+        main section.hotel-view #feed_form h3 input[type='radio'] + div.check {
+          width: 20px;
+          height: 20px;
+          display: inline-block;
+          background: url("../img/check_out.svg");
+          margin-bottom: -5px;
+          margin-left: 30px; }
+        main section.hotel-view #feed_form h3 input[type='radio']:checked + div.check {
+          width: 20px;
+          height: 20px;
+          display: inline-block;
+          background: url("../img/check_in.svg");
+          margin-bottom: -5px;
+          margin-left: 30px; }
       main section.hotel-view #feed_form textarea {
         color: #828282;
         text-align: left;
@@ -1277,62 +1364,56 @@ main {
         margin-top: 10px;
         float: right;
         background-color: #399DD0; }
-    main section.hotel-view aside.room-info > div img + div {
-      height: 28px;
-      position: absolute;
-      top: 85px;
-      padding: 3px 10px;
-      background-color: #97CB52;
-      border-radius: 10px;
-      font-family: 'OpenSans Light',sans-serif;
-      color: #fff;
-      display: none;
-      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
-      width: inherit;
-      width: inherit; }
-      main section.hotel-view aside.room-info > div img + div:after {
-        content: '';
-        display: block;
-        border: 8px transparent solid;
-        border-bottom: 8px #97CB52 solid;
-        width: 0;
-        height: 0;
-        margin-top: -35px; }
-    main section.hotel-view aside.room-info > div img[alt='bed'] {
-      margin-left: 0; }
-    main section.hotel-view aside.room-info > div img[alt='bed']:hover + div {
-      display: block;
-      left: 0;
-      top: 580px; }
-    main section.hotel-view aside.room-info > div img[alt='wifi']:hover + div {
-      display: block;
-      left: 65px;
-      top: 580px; }
-    main section.hotel-view aside.room-info > div img[alt='bath']:hover + div {
-      display: block;
-      left: 150px;
-      top: 580px;
-      width: inherit; }
-    main section.hotel-view aside.room-info > div img[alt='wc']:hover + div {
-      display: block;
-      left: 220px;
-      top: 580px;
-      width: inherit; }
-    main section.hotel-view aside.room-info > div img[alt='cond']:hover + div {
-      display: block;
-      left: 295px;
-      top: 580px;
-      width: inherit; }
-    main section.hotel-view aside.room-info > div img[alt='tv']:hover + div {
-      display: block;
-      left: 385px;
-      top: 580px;
-      width: inherit; }
-    main section.hotel-view aside.room-info > div img[alt='kitchen']:hover + div {
-      display: block;
-      left: 460px;
-      top: 580px;
-      width: inherit; }
+    main section.hotel-view aside.room-info > div ul {
+      margin: 0;
+      padding: 0; }
+      main section.hotel-view aside.room-info > div ul li {
+        display: inline-block;
+        margin: 0 0 10px 0;
+        position: relative;
+        width: 84px; }
+        main section.hotel-view aside.room-info > div ul li img + div {
+          height: 28px;
+          position: absolute;
+          top: 85px;
+          padding: 3px 10px;
+          background-color: #97CB52;
+          border-radius: 10px;
+          font-family: 'OpenSans Light',sans-serif;
+          color: #fff;
+          display: none;
+          box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+          width: inherit;
+          position: absolute;
+          left: 0;
+          top: 25px; }
+          main section.hotel-view aside.room-info > div ul li img + div:after {
+            content: '';
+            display: block;
+            border: 8px transparent solid;
+            border-bottom: 8px #97CB52 solid;
+            width: 0;
+            height: 0;
+            margin-top: -35px; }
+        main section.hotel-view aside.room-info > div ul li img:hover + div {
+          display: block;
+          z-index: 2; }
+        main section.hotel-view aside.room-info > div ul li img[alt='bed'] {
+          margin-left: 0; }
+        main section.hotel-view aside.room-info > div ul li img[alt='bed']:hover + div {
+          width: 190px; }
+        main section.hotel-view aside.room-info > div ul li img[alt='bath']:hover + div {
+          width: 110px; }
+        main section.hotel-view aside.room-info > div ul li img[alt='wc']:hover + div {
+          width: 130px; }
+        main section.hotel-view aside.room-info > div ul li img[alt='cond']:hover + div {
+          width: 100px; }
+        main section.hotel-view aside.room-info > div ul li img[alt='tv']:hover + div {
+          width: 100px; }
+        main section.hotel-view aside.room-info > div ul li img[alt='kitchen']:hover + div {
+          width: 70px; }
+        main section.hotel-view aside.room-info > div ul li img[alt='wifi']:hover + div {
+          width: 60px; }
     main section.hotel-view aside.feeds {
       background-color: #fff;
       /*width: 670px;*/
@@ -1718,11 +1799,20 @@ main {
         height: 125px;
         border-radius: 5px;
         margin-right: 28px;
-        overflow: hidden; }
+        overflow: hidden;
+        position: relative; }
         main section.hotel-photos aside.photos ul li img {
           width: 100%; }
         main section.hotel-photos aside.photos ul li:last-child {
           /*margin: 0;*/ }
+        main section.hotel-photos aside.photos ul li i {
+          position: absolute;
+          font-size: 50px;
+          color: #fff;
+          top: 32px;
+          left: 70px;
+          cursor: pointer;
+          display: none; }
   main section.hotel-photos aside.menu {
     margin: 35px 0 0 0;
     padding: 0;
@@ -1869,7 +1959,7 @@ main {
       float: left;
       height: 240px; }
     main section.room-edit aside.room-list {
-      height: 100%;
+      height: auto;
       width: 200px; }
       main section.room-edit aside.room-list h1 {
         /*font-family: 'Rubik-Regular',sans-serif;*/
@@ -1896,7 +1986,8 @@ main {
           font-size: 16px;
           color: #999;
           text-align: center;
-          line-height: 2.2em; }
+          line-height: 2.2em;
+          cursor: pointer; }
           main section.room-edit aside.room-list ul li.active {
             color: #000;
             position: relative; }
@@ -2058,6 +2149,7 @@ main {
       margin: 0;
       padding: 0 0 3px 0; }
     main section.room-photos div {
+      position: relative;
       width: 170px;
       height: 125px;
       border-radius: 5px;
@@ -2065,10 +2157,22 @@ main {
       margin: 10px 0; }
       main section.room-photos div img {
         width: 100%; }
+      main section.room-photos div i {
+        position: absolute;
+        font-size: 50px;
+        color: #fff;
+        top: 32px;
+        left: 70px;
+        cursor: pointer;
+        display: none; }
     main section.room-photos div:nth-of-type(odd) {
       float: left; }
     main section.room-photos div:nth-of-type(even) {
       float: right; }
+    main section.room-photos menu {
+      float: left;
+      padding: 0;
+      width: 100%; }
     main section.room-photos a {
       /*font-family: 'Rubik-Medium',sans-serif;*/
       font-family: 'OpenSans Bold',Arial, sans-serif;
@@ -2228,6 +2332,22 @@ main {
             position: absolute;
             top: 17px;
             left: 5px; }
+          main section.feeds-edit aside > div.feed span.minus {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            background: url("../img/minus.svg");
+            position: absolute;
+            top: 17px;
+            left: 5px; }
+          main section.feeds-edit aside > div.feed span.re {
+            width: 22px;
+            height: 20px;
+            display: inline-block;
+            background: url("../img/re.png");
+            position: absolute;
+            top: 17px;
+            left: 5px; }
           main section.feeds-edit aside > div.feed i {
             display: block;
             position: absolute;
@@ -2330,7 +2450,7 @@ section.other, section.history {
       border-radius: 5px 5px  0 0;
       overflow: hidden; }
       section.other aside div.main-photo img, section.history aside div.main-photo img {
-        widh: 270px; }
+        width: 270px; }
     section.other aside div.content, section.history aside div.content {
       padding: 20px; }
       section.other aside div.content h3, section.history aside div.content h3 {
@@ -2535,6 +2655,25 @@ footer {
       width: 540px; }
     main div.main_head {
       width: 768px; }
+    main section.user-info {
+      float: none;
+      margin: 0 auto; }
+      main section.user-info > button {
+        width: 100%; }
+    main section.adds-list {
+      width: 768px;
+      float: none;
+      margin: 0 auto; }
+      main section.adds-list ul.caption li:nth-child(1) {
+        width: 276px; }
+      main section.adds-list ul.caption li:nth-child(2) {
+        width: 178px; }
+      main section.adds-list ul.caption li:nth-child(3) {
+        width: 200px; }
+      main section.adds-list aside div {
+        margin-right: 10px; }
+      main section.adds-list aside > a.btn-default {
+        width: 120px; }
     main section.adds {
       width: 768px;
       float: none; }
@@ -2551,62 +2690,36 @@ footer {
       width: 768px;
       float: none; }
       main section.book-adds aside, main section.rooms aside {
-        width: 768px; }
+        width: 768px;
+        /*div.content{
+        	width:498px;
+        	div.info-beach{
+        		left: 280px;
+        	}
+        	div.info-wifi{
+        		left: 415px;
+        	}
+        	div.info-rooms{
+        		left: 410px;
+        	}
+        	div.info-bath{
+        		left: 515px;
+        	}
+        	article{
+        		height: 40px;
+        		overflow: hidden;
+        	}
+        	div.grey{
+        		width:470px;
+        	}
+        }*/ }
         main section.book-adds aside div.photo, main section.rooms aside div.photo {
           width: 270px;
           overflow: hidden; }
           main section.book-adds aside div.photo img.images, main section.rooms aside div.photo img.images {
             left: 230px; }
-        main section.book-adds aside div.content, main section.rooms aside div.content {
-          width: 498px; }
-          main section.book-adds aside div.content div.info-beach, main section.rooms aside div.content div.info-beach {
-            left: 280px; }
-          main section.book-adds aside div.content div.info-wifi, main section.rooms aside div.content div.info-wifi {
-            left: 415px; }
-          main section.book-adds aside div.content div.info-rooms, main section.rooms aside div.content div.info-rooms {
-            left: 410px; }
-          main section.book-adds aside div.content div.info-bath, main section.rooms aside div.content div.info-bath {
-            left: 515px; }
-          main section.book-adds aside div.content article, main section.rooms aside div.content article {
-            height: 40px;
-            overflow: hidden; }
-          main section.book-adds aside div.content div.grey, main section.rooms aside div.content div.grey {
-            width: 470px; }
     main section.rooms aside > div.content img[alt='bed'] {
       margin-left: 0; }
-    main section.rooms aside > div.content img[alt='bed']:hover + div {
-      display: block;
-      top: 80px; }
-    main section.rooms aside > div.content img[alt='wifi']:hover + div {
-      display: block;
-      top: 80px;
-      left: 335px;
-      /*445*/ }
-    main section.rooms aside > div.content img[alt='bath']:hover + div {
-      display: block;
-      top: 80px;
-      left: 390px;
-      width: 110px; }
-    main section.rooms aside > div.content img[alt='wc']:hover + div {
-      display: block;
-      top: 80px;
-      left: 440px;
-      width: 120px; }
-    main section.rooms aside > div.content img[alt='cond']:hover + div {
-      display: block;
-      top: 80px;
-      left: 495px;
-      width: 100px; }
-    main section.rooms aside > div.content img[alt='tv']:hover + div {
-      display: block;
-      top: 80px;
-      left: 560px;
-      width: 90px; }
-    main section.rooms aside > div.content img[alt='kitchen']:hover + div {
-      display: block;
-      top: 80px;
-      left: 610px;
-      width: 60px; }
     main section.banners {
       display: none; }
     main section.hotel-view {
@@ -2620,32 +2733,9 @@ footer {
         main section.hotel-view aside.hotel-info form#feed_form textarea, main section.hotel-view aside.room-info form#feed_form textarea {
           width: 100%; }
       main section.hotel-view aside.room-info > div img {
-        margin: 0 5px 0 25px; }
-      main section.hotel-view aside.room-info > div img[alt='bed'] {
+        margin: 0 5px 0 0; }
+      main section.hotel-view aside.room-info > div ul li img[alt='bed'] {
         margin-left: 0; }
-      main section.hotel-view aside.room-info > div img[alt='bed']:hover + div {
-        top: 420px; }
-      main section.hotel-view aside.room-info > div img[alt='wifi']:hover + div {
-        left: 55px;
-        top: 420px; }
-      main section.hotel-view aside.room-info > div img[alt='bath']:hover + div {
-        left: 130px;
-        top: 420px; }
-      main section.hotel-view aside.room-info > div img[alt='wc']:hover + div {
-        left: 195px;
-        top: 420px; }
-      main section.hotel-view aside.room-info > div img[alt='cond']:hover + div {
-        display: block;
-        left: 260px;
-        top: 420px; }
-      main section.hotel-view aside.room-info > div img[alt='tv']:hover + div {
-        display: block;
-        left: 335px;
-        top: 420px; }
-      main section.hotel-view aside.room-info > div img[alt='kitchen']:hover + div {
-        display: block;
-        left: 400px;
-        top: 420px; }
       main section.hotel-view aside.feeds {
         max-width: 450px;
         height: 100%;
@@ -2868,6 +2958,44 @@ footer {
         header > div div.input-group input[type='text'] {
           width: 235px; }
 
+  div.add-hotel div.modal-body textarea {
+    display: block;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto; }
+  div.add-hotel div.modal-body div.select-box {
+    width: 275px;
+    margin-left: auto;
+    margin-right: auto; }
+    div.add-hotel div.modal-body div.select-box select.left, div.add-hotel div.modal-body div.select-box input.left {
+      margin-right: 0; }
+  div.add-hotel div.modal-body div.mixed1 {
+    width: 220px;
+    margin-left: auto;
+    margin-right: auto; }
+  div.add-hotel div.modal-body div.mixed2 button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px; }
+  div.add-hotel div.modal-body div.mixed3 {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto; }
+    div.add-hotel div.modal-body div.mixed3 label span.right {
+      padding-left: 0; }
+  div.add-hotel div.modal-body div.room-check {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto; }
+  div.add-hotel div.modal-footer button.btn {
+    display: block;
+    float: none;
+    margin: 10px auto; }
+    div.add-hotel div.modal-footer button.btn:last-of-type {
+      margin: 10px auto;
+      float: none !important; }
+
   div.slider {
     width: 100%;
     position: relative;
@@ -2955,6 +3083,26 @@ footer {
       float: none; }
     main > div.rooms-line1, main div.rooms-line2 {
       top: 65px; }
+    main section.adds-list {
+      margin-top: 30px;
+      width: 100%; }
+      main section.adds-list ul.caption {
+        display: none; }
+      main section.adds-list aside.add {
+        width: 100%;
+        margin-bottom: 30px; }
+        main section.adds-list aside.add div {
+          margin: 2px 0 0;
+          display: block;
+          float: none; }
+          main section.adds-list aside.add div:nth-child(1) {
+            width: 100%; }
+          main section.adds-list aside.add div:nth-child(2) {
+            width: 100%; }
+          main section.adds-list aside.add div:nth-child(3) {
+            width: 100%; }
+        main section.adds-list aside.add > a.btn-default {
+          width: 100%; }
     main section.adds {
       width: 360px;
       margin: 0 auto; }
@@ -3003,22 +3151,8 @@ footer {
           height: auto; }
           main section.book-adds aside div.content h3, main section.rooms aside div.content h3 {
             margin-left: 0px; }
-          main section.book-adds aside div.content img, main section.rooms aside div.content img {
-            margin: 0 10px 0 90px; }
           main section.book-adds aside div.content img[alt='beach'], main section.book-adds aside div.content img[alt='marker'], main section.book-adds aside div.content img[alt='phone'], main section.book-adds aside div.content img[alt='bath'], main section.rooms aside div.content img[alt='beach'], main section.rooms aside div.content img[alt='marker'], main section.rooms aside div.content img[alt='phone'], main section.rooms aside div.content img[alt='bath'] {
             margin-left: 0; }
-          main section.book-adds aside div.content div.info-beach, main section.rooms aside div.content div.info-beach {
-            left: 0;
-            top: 305px; }
-          main section.book-adds aside div.content div.info-wifi, main section.rooms aside div.content div.info-wifi {
-            left: 153px;
-            top: 305px; }
-          main section.book-adds aside div.content div.info-rooms, main section.rooms aside div.content div.info-rooms {
-            left: 215px;
-            top: 305px; }
-          main section.book-adds aside div.content div.info-bath, main section.rooms aside div.content div.info-bath {
-            left: 5px;
-            top: 325px; }
           main section.book-adds aside div.content article, main section.rooms aside div.content article {
             height: 60px;
             width: 330px;
@@ -3031,33 +3165,13 @@ footer {
             main section.book-adds aside div.content div.details a, main section.rooms aside div.content div.details a {
               margin-right: 0; }
     main section.rooms aside {
-      height: 500px;
+      height: 550px;
       /*480px;*/ }
       main section.rooms aside > div.content img {
         margin-right: 1px;
         margin-left: 10px; }
       main section.rooms aside > div.content img[alt='bath'] {
         margin-left: 12px; }
-      main section.rooms aside > div.content img[alt='bed']:hover + div {
-        top: 300px; }
-      main section.rooms aside > div.content img[alt='wifi']:hover + div {
-        top: 300px;
-        left: 50px; }
-      main section.rooms aside > div.content img[alt='bath']:hover + div {
-        top: 300px;
-        left: 100px; }
-      main section.rooms aside > div.content img[alt='wc']:hover + div {
-        top: 300px;
-        left: 150px; }
-      main section.rooms aside > div.content img[alt='cond']:hover + div {
-        top: 300px;
-        left: 195px; }
-      main section.rooms aside > div.content img[alt='tv']:hover + div {
-        top: 300px;
-        left: 250px; }
-      main section.rooms aside > div.content img[alt='kitchen']:hover + div {
-        top: 300px;
-        left: 300px; }
     main section.hotel-view {
       max-width: 100%;
       /*min-height: 3650px;*/ }
@@ -3077,34 +3191,11 @@ footer {
         top: 900px;*/
         height: 330px; }
       main section.hotel-view aside.room-info > div img {
-        margin: 0 2px 0 12px; }
-      main section.hotel-view aside.room-info > div img[alt='bed'] {
+        margin: 0 2px 0 0px; }
+      main section.hotel-view aside.room-info > div ul li img[alt='bed'] {
         margin-left: 0; }
-      main section.hotel-view aside.room-info > div img[alt='bath'] {
+      main section.hotel-view aside.room-info > div ul li img[alt='bath'] {
         margin: 0 2px 0 12px; }
-      main section.hotel-view aside.room-info > div img[alt='bed']:hover + div {
-        top: 350px; }
-      main section.hotel-view aside.room-info > div img[alt='wifi']:hover + div {
-        left: 40px;
-        top: 350px; }
-      main section.hotel-view aside.room-info > div img[alt='bath']:hover + div {
-        left: 100px;
-        top: 350px; }
-      main section.hotel-view aside.room-info > div img[alt='wc']:hover + div {
-        left: 150px;
-        top: 350px; }
-      main section.hotel-view aside.room-info > div img[alt='cond']:hover + div {
-        display: block;
-        left: 200px;
-        top: 350px; }
-      main section.hotel-view aside.room-info > div img[alt='tv']:hover + div {
-        display: block;
-        left: 255px;
-        top: 350px; }
-      main section.hotel-view aside.room-info > div img[alt='kitchen']:hover + div {
-        display: block;
-        left: 310px;
-        top: 350px; }
       main section.hotel-view aside.feeds {
         /*position: absolute;
         top: 3150px;

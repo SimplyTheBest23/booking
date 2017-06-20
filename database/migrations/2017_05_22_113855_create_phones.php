@@ -15,7 +15,7 @@ class CreatePhones extends Migration
     {
         Schema::create('phones', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedBigInteger('phone')->unique();
+            $table->char('phone',12)->unique();
             $table->unsignedInteger('user_id');
         });
     }
