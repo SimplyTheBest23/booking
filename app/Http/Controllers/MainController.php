@@ -57,19 +57,20 @@ class MainController extends Controller
 
     public function publishHotel(Request $request)
     {
-        if (!preg_match('/^\d{12}$/i' , $request->user['phone'])) return 'error';
-        if (!preg_match('/^\w{2,20}$/i' , $request->user['name'])) return 'error';
-        if (!preg_match('/^\w{2,30}$/i' , $request->hotel['title'])) return 'error';
-        if (!preg_match('/^\w{5,50}$/i' , $request->hotel['address'])) return 'error';
-        if (!preg_match('/^\w{2,249}$/i' , $request->hotel['about'])) return 'error';
-        if (!preg_match('/^\d{1,4}$/i' , $request->hotel['price'])) return 'error';
-        if (!preg_match('/^\d{1,4}$/i' , $request->hotel['to_beach'])) return 'error';
-        if (!preg_match('/^\d{1,4}$/i' , $request->hotel['to_shop'])) return 'error';
-        if (!preg_match('/^\d{1,4}$/i' , $request->hotel['to_rest'])) return 'error';
-        if (!preg_match('/^\d{1,4}$/i' , $request->hotel['to_bath'])) return 'error';
-        if (!preg_match('/^\d{1,4}$/i' , $request->hotel['to_disco'])) return 'error';
-        if (!preg_match('/^\d{1,3}$/i' , $request->hotel['lux'])) return 'error';
-        if (!preg_match('/^\d{1,3}$/i' , $request->hotel['rooms'])) return 'error';
+        echo ' ';
+        if (!preg_match('/^\d{12}$/i' , $request->user['phone'])) return 'error phone';
+        if (!preg_match('/^.{2,20}$/i' , $request->user['name'])) return 'error Uname';
+        if (!preg_match('/^.{2,30}$/i' , $request->hotel['title'])) return 'error Htitle';
+        if (!preg_match('/^.{5,50}$/i' , $request->hotel['address'])) return 'error Address';
+        if (!preg_match('/^.{2,249}$/i' , $request->hotel['about'])) return 'error Habout';
+        if (!preg_match('/^\d{1,4}$/i' , $request->hotel['price'])) return 'error Hprice';
+        if (!preg_match('/^\d{1,4}$/i' , $request->hotel['to_beach'])) return 'error to_beach';
+        if (!preg_match('/^\d{1,4}$/i' , $request->hotel['to_shop'])) return 'error to_shop';
+        if (!preg_match('/^\d{1,4}$/i' , $request->hotel['to_rest'])) return 'error to_rest';
+        if (!preg_match('/^\d{1,4}$/i' , $request->hotel['to_bus'])) return 'error to_bath';
+        if (!preg_match('/^\d{1,4}$/i' , $request->hotel['to_disco'])) return 'error to_disco';
+        if (!preg_match('/^\d{1,3}$/i' , $request->hotel['lux'])) return 'error lux';
+        if (!preg_match('/^\d{1,3}$/i' , $request->hotel['rooms'])) return 'error Hrooms';
         $old_phone = phone::where('phone','=',$request->user['phone'])->first();
         if ($old_phone){
             $user = User::find($old_phone->user_id);
@@ -85,6 +86,7 @@ class MainController extends Controller
             $new_phone->user_id = $user->id;
             $new_phone->save();
         }
+        session(['user_id' => $user->id]);
         $hotel = new HotelModel;
         $hotel->city_id = $request->hotel['city_id'];
         $hotel->bath = $request->hotel['bath'];
@@ -132,9 +134,9 @@ class MainController extends Controller
         $hotel->save();
 
         foreach ($request->rooms as $rroom) {
-            if (!preg_match('/^\w{1,30}$/i' , $rroom['title'])) return 'error';
-            if (!preg_match('/^\d{1,4}$/i' , $rroom['price'])) return 'error';
-            if (!preg_match('/^\w{5,249}$/i' , $rroom['about'])) return 'error';
+            if (!preg_match('/^.{1,30}$/i' , $rroom['title'])) return 'error Rtitle='.$rroom['title'].'!';
+            if (!preg_match('/^\d{1,4}$/i' , $rroom['price'])) return 'error Rprice';
+            if (!preg_match('/^.{5,249}$/i' , $rroom['about'])) return 'error Rabout';
             $room = new rooms;
             $room->hotel_id = $hotel->id;
             $room->title = $rroom['title'];
@@ -177,21 +179,20 @@ class MainController extends Controller
             //alerady in
             echo true;
         } else{
-            if (!preg_match('/^\d{12}$/i' , $request->phone)) return 'error';
-            if (!preg_match('/^\w{2,50}$/i' , $request->password)) return 'error';
+            if (!preg_match('/^\d{12}$/i' , $request->phone)) return 'error phone';
+            if (!preg_match('/^.{2,50}$/i' , $request->password)) return 'error password';
             $phone = phone::where('phone','=',$request->phone)->first();
             if ($phone){
                 $user = User::find($phone->user_id);
-                //echo $user->password;
                 if (strtoupper($request->password) == $user->password){
                         session(['user_id' => $user->id]);
                         echo true;
                     }
                 else{
-                    echo false;//bad pass
+                    echo 'wrong password';
                 }
             } else {
-                echo false;//not user
+                echo 'phone not found';
             }
         }
     }
@@ -211,15 +212,15 @@ class MainController extends Controller
         $code = genpass::genPass();
         $user->password = $code;
         $user->save();
-        SmsModel::send($request->phone, 'пароль:'.$code, 'пароль');
+        SmsModel::send($request->phone, 'Ваш пароль:'.$code.' (збережіть його, буде потрібен для керування оголошенням)', 'пароль');
         echo $user->name;
     }
 
     public function putFeed(Request $request)
     {
         if (!preg_match('/^\d{12}$/i' , $request->phone)) return 'error';
-        if (!preg_match('/^\w{2,30}$/i' , $request->name)) return 'error';
-        if (!preg_match('/^\w{2,249}$/i' , $request->comment)) return 'error';
+        if (!preg_match('/^.{2,30}$/i' , $request->name)) return 'error';
+        if (!preg_match('/^.{2,249}$/i' , $request->comment)) return 'error';
         $new = true;
         $hotel = HotelModel::find($request->hotel_id);
         $user = User::find($hotel->user_id);//хозяин
@@ -247,7 +248,7 @@ class MainController extends Controller
             $phone = phone::where('user_id','=',$user->id)->first();
             SmsModel::send($phone->phone, 'новий відгук по '.$hotel->title, 'відгук');
         } else{
-            SmsModel::send($request->phone, 'відгук на своє оголошення!', 'блок відгука');
+            //SmsModel::send($request->phone, 'відгук на своє оголошення заборонений!', 'блок відгука');
         }
         $feeds = feed::where('hotel_id','=',$hotel->id)->latest()->take(4)->get();
         echo json_encode($feeds);
@@ -255,7 +256,15 @@ class MainController extends Controller
 
     public function feedsList(Request $request)
     {
-        $feeds = feed::where('hotel_id','=',$request->hotel_id)->get();
+        $feeds = feed::where('hotel_id','=',$request->hotel_id)->where('reight','!=','0')->get();
+        for($i=0;$i<count($feeds);$i++){
+            if ($feeds[$i]->feed_id > 0){
+                $feed_re = feed::where('id', '=', $feeds[$i]->feed_id)->value('comment');
+                $feeds[$i]->re = $feed_re;
+            } else {
+                $feeds[$i]->re = '';
+            }
+        }
         echo json_encode($feeds);
     }
 
@@ -263,6 +272,22 @@ class MainController extends Controller
     {
         $feed = feed::find($request->id);
         $feed->status = $request->status;
+        $feed->save();
+        echo "ok";
+    }
+
+    public function feedsRe(Request $request)
+    {
+        $feed = feed::find($request->id);
+        $feed->status = 2;
+        $nfeed = new feed;
+        $nfeed->comment = $request->re;
+        $nfeed->phone = phone::where('user_id', '=', session('user_id'))->first()->value('phone');
+        $nfeed->name = User::where('id', '=', session('user_id'))->first()->value('name');
+        $nfeed->reight = 0;
+        $nfeed->hotel_id = $feed->hotel_id;
+        $nfeed->save();
+        $feed->feed_id = $nfeed->id;
         $feed->save();
         echo "ok";
     }
@@ -289,20 +314,19 @@ class MainController extends Controller
         echo 'start';
         $user = $request->user;
         var_dump($user['name']);
-        if (!preg_match('/^\w{1,5}$/i' , $user['name'])) return 'error';
+        if (!preg_match('/^.{1,5}$/i' , $user['name'])) return 'error';
         echo ' end';
     }
 
     public function testGet()
     {
         echo 'start... ';
-        $client = new SoapClient('http://turbosms.in.ua/api/wsdl.html');
-        echo $client->__getFunctions();
+        echo preg_match('/^.{2,20}$/i' , 'Владиммир');
     }
 
     public function saveUserData(Request $request)
     {
-        if (!preg_match('/^\w{2,30}$/i' , $request->change_user_name)) return 'error';
+        if (!preg_match('/^.{2,30}$/i' , $request->change_user_name)) return 'error';
         $name = $request->change_user_name;
         if (strlen($name)<3){
             return false;

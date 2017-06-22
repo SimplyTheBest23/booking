@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-	
+
 	<div class="col-md-3">
 		<table id="ad_list" class="table table-striped">
 			<caption>все объявления</caption>
@@ -43,11 +43,12 @@
 	</div>
 	<div class="col-md-2">
 		<nav class="btn-group-vertical">
-			
+
 		</nav>
 	</div>
 </div>
-
-
-<script src="{{ url('js/admin_ads.js')}}"></script>
+<script>
+var baseUrl='../';
+</script>
+<script src="{{ url('js/admin/admin_ads.js')}}"></script>
 @endsection

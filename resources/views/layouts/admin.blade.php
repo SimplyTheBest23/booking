@@ -20,6 +20,7 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    <script src="https://use.fontawesome.com/5ec193cf54.js"></script>
     <script src="{{ url('/js/verify2.js')}}"></script>
 
 </head>

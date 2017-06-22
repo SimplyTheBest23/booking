@@ -5,8 +5,8 @@
     <div class="main_head">
         <ol class="path">
           <li><a href="{{asset('/')}}">Головна</a></li>
-          <li><a href="#">Оголошення</a></li>
-          <li><a href="#">Оренда житла</a></li>
+          <li><a href="{{asset('cabinet')}}">Оголошення</a></li>
+          <li><a href="{{asset('cabinet')}}">Оренда житла</a></li>
           <li class="active">Кращий відпочинок на озері</li>
         </ol>
         <div class="green"></div>
@@ -251,7 +251,9 @@
 
             </aside>
             <p>від <span>{{$hotel->price}}</span> грн/доба</p>
-            <a href="#" class="btn btn-success">Керування оголошенням</a>
+            @if (session('user_id'))
+            <a href="{{asset('cabinet')}}" class="btn btn-success">Керування оголошенням</a>
+            @endif
             <a href="{{asset('/rooms/'.$hotel->id)}}" class="btn btn-warning">Переглянути номери</a>
             <div class="phone">
                 <h3>{{$user->name}}</h4>
@@ -304,7 +306,7 @@
                         <div class="grey"></div>
                         <p>
                         <span>{{$visit['price']}}</span> {{$visit['price_type']}}
-                                <a href="{{$visit['link']}}" class="pull-right">Детальніше
+                                <a href="{{asset($visit['link'])}}" class="pull-right">Детальніше
                                         <img src="../img/arrow.svg" alt='->'>
                                 </a>
                         </p>

@@ -374,6 +374,141 @@ div#view_feed div.modal-footer {
     div#view_feed div.modal-footer button:last-of-type {
       margin-left: 30px; }
 
+div#view_feed_empty div.modal-header {
+  border-bottom: none;
+  padding: 15px 15px 0 15px; }
+div#view_feed_empty h4.modal-title {
+  /*font-family: 'Rubik-Medium',sans-serif;*/
+  font-family: 'OpenSans Bold',Arial, sans-serif;
+  font-size: 30px;
+  text-align: center;
+  color: #399DD0; }
+div#view_feed_empty button.close {
+  color: #97CB52;
+  /*font-family: 'Rubik-Medium',sans-serif;*/
+  font-family: 'OpenSans Bold',Arial, sans-serif;
+  font-weight: 900;
+  font-size: 30px;
+  opacity: 0.5;
+  margin-top: -10px; }
+div#view_feed_empty div.modal-body p {
+  /*font-family: 'Rubik-Light',sans-serif;*/
+  font-family: 'OpenSans Light',Arial, sans-serif;
+  font-size: 16px;
+  color: #000;
+  border: 1px #ADADAD solid;
+  border-radius: 1px;
+  margin-bottom: 10px;
+  padding: 15px 10px; }
+div#view_feed_empty div.modal-body p:first-of-type {
+  height: 400px;
+  overflow-y: scroll; }
+  div#view_feed_empty div.modal-body p:first-of-type span.plus {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background: url("../img/plus.svg");
+    margin: 0 10px -5px 10px; }
+  div#view_feed_empty div.modal-body p:first-of-type span.minus {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background: url("../img/minus.svg");
+    margin: 0 10px -5px 10px; }
+  div#view_feed_empty div.modal-body p:first-of-type span.re {
+    width: 22px;
+    height: 20px;
+    display: inline-block;
+    background: url("../img/re.png");
+    margin: 0 10px -5px 10px; }
+div#view_feed_empty div.modal-footer {
+  border-top: none;
+  padding: 0 15px 15px 15px;
+  text-align: center; }
+  div#view_feed_empty div.modal-footer button {
+    /*font-family: 'Rubik-Regular',sans-serif;*/
+    font-family: 'OpenSans Regular',Arial, sans-serif;
+    font-size: 14px;
+    padding: 2px 12px;
+    width: 170px;
+    height: 30px;
+    border: 2px #97CB52 solid;
+    border-radius: 4px;
+    color: #97CB52;
+    line-height: -0.5;
+    background-color: #fff; }
+    div#view_feed_empty div.modal-footer button:hover {
+      color: #fff;
+      background-color: #97CB52; }
+    div#view_feed_empty div.modal-footer button i {
+      font-size: 17px;
+      font-weight: 900;
+      line-height: 14px;
+      margin-bottom: -3px;
+      display: inline-block; }
+    div#view_feed_empty div.modal-footer button:last-of-type {
+      margin-left: 30px; }
+
+div#view_feed_re div.modal-header {
+  border-bottom: none;
+  padding: 15px 15px 0 15px; }
+div#view_feed_re h4.modal-title {
+  /*font-family: 'Rubik-Medium',sans-serif;*/
+  font-family: 'OpenSans Bold',Arial, sans-serif;
+  font-size: 30px;
+  text-align: center;
+  color: #399DD0; }
+div#view_feed_re button.close {
+  color: #97CB52;
+  /*font-family: 'Rubik-Medium',sans-serif;*/
+  font-family: 'OpenSans Bold',Arial, sans-serif;
+  font-weight: 900;
+  font-size: 30px;
+  opacity: 0.5;
+  margin-top: -10px; }
+div#view_feed_re div.modal-body p {
+  /*font-family: 'Rubik-Light',sans-serif;*/
+  font-family: 'OpenSans Light',Arial, sans-serif;
+  font-size: 16px;
+  color: #000;
+  border: 1px #ADADAD solid;
+  border-radius: 1px;
+  margin-bottom: 10px;
+  padding: 15px 10px; }
+div#view_feed_re div.modal-body textarea {
+  width: 500px;
+  height: 400px;
+  resize: none;
+  overflow-y: scroll;
+  margin: 0 33px; }
+div#view_feed_re div.modal-footer {
+  border-top: none;
+  padding: 0 15px 15px 15px;
+  text-align: center; }
+  div#view_feed_re div.modal-footer button {
+    /*font-family: 'Rubik-Regular',sans-serif;*/
+    font-family: 'OpenSans Regular',Arial, sans-serif;
+    font-size: 14px;
+    padding: 2px 12px;
+    width: 170px;
+    height: 30px;
+    border: 2px #97CB52 solid;
+    border-radius: 4px;
+    color: #97CB52;
+    line-height: -0.5;
+    background-color: #fff; }
+    div#view_feed_re div.modal-footer button:hover {
+      color: #fff;
+      background-color: #97CB52; }
+    div#view_feed_re div.modal-footer button i {
+      font-size: 17px;
+      font-weight: 900;
+      line-height: 14px;
+      margin-bottom: -3px;
+      display: inline-block; }
+    div#view_feed_re div.modal-footer button:last-of-type {
+      margin-left: 30px; }
+
 div.add-hotel div.modal-header {
   border-bottom: none;
   padding: 15px 15px 0 15px; }
@@ -756,7 +891,7 @@ div.add-hotel div.modal-footer {
   border-top: none;
   padding: 0 15px 15px 15px;
   text-align: center; }
-  div.add-hotel div.modal-footer button {
+  div.add-hotel div.modal-footer a, div.add-hotel div.modal-footer button {
     /*font-family: 'Rubik-Regular',sans-serif;*/
     font-family: 'OpenSans Regular',Arial, sans-serif;
     font-size: 14px;
@@ -768,20 +903,20 @@ div.add-hotel div.modal-footer {
     color: #97CB52;
     line-height: -0.5;
     background-color: #fff; }
-    div.add-hotel div.modal-footer button:hover {
+    div.add-hotel div.modal-footer a:hover, div.add-hotel div.modal-footer button:hover {
       color: #fff;
       background-color: #97CB52; }
-    div.add-hotel div.modal-footer button i {
+    div.add-hotel div.modal-footer a i, div.add-hotel div.modal-footer button i {
       font-size: 17px;
       font-weight: 900;
       line-height: 14px;
       margin-bottom: -3px;
       display: inline-block; }
-    div.add-hotel div.modal-footer button:last-of-type {
+    div.add-hotel div.modal-footer a:last-of-type, div.add-hotel div.modal-footer button:last-of-type {
       margin-right: 100px; }
-  div.add-hotel div.modal-footer.step6 button {
+  div.add-hotel div.modal-footer.step6 a, div.add-hotel div.modal-footer.step6 button {
     width: 250px; }
-    div.add-hotel div.modal-footer.step6 button:last-of-type {
+    div.add-hotel div.modal-footer.step6 a:last-of-type, div.add-hotel div.modal-footer.step6 button:last-of-type {
       margin-right: 0; }
 
 main {
@@ -3028,7 +3163,7 @@ footer {
       margin-left: -165px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.9); }
 
-  div#view_feed div.modal-footer button:last-of-type {
+  div#view_feed div.modal-footer button:last-of-type, div#view_feed_empty div.modal-footer button:last-of-type, div#view_feed_re div.modal-footer button:last-of-type {
     margin-left: 0;
     margin-top: 10px; }
 

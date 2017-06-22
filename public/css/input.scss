@@ -562,6 +562,153 @@ div#view_feed{
 	}
 }
 
+div#view_feed_empty{
+	div.modal-header{
+		border-bottom: none;
+		padding: 15px 15px 0 15px;
+	}
+	h4.modal-title{
+		@include fmedium;
+		font-size: 30px;
+		text-align: center;
+		color: #399DD0;
+	}
+	button.close{
+		color: #97CB52;
+		@include fmedium;
+		font-weight: 900;
+		font-size: 30px;
+		opacity: 0.5;
+		margin-top: -10px;
+	}
+	div.modal-body{
+		p{
+			@include flight;
+			font-size: 16px;
+			color: #000;
+			border: 1px #ADADAD solid;
+			border-radius: 1px;
+			margin-bottom: 10px;
+			padding: 15px 10px;
+		}
+		p:first-of-type{
+			height: 400px;
+			overflow-y: scroll;
+			span.plus{
+				@include plus;
+                margin: 0 10px -5px 10px;
+			}
+			span.minus{
+				@include minus;
+                margin: 0 10px -5px 10px;
+			}
+            span.re{
+				@include re;
+                margin: 0 10px -5px 10px;
+			}
+		}
+	}
+	div.modal-footer{
+		border-top: none;
+		padding: 0 15px 15px 15px;
+		text-align: center;
+		button{
+			@include fregular;
+			font-size: 14px;
+			padding: 2px 12px;
+			width: 170px; height: 30px;
+			border: 2px #97CB52 solid;
+			border-radius: 4px;
+			color: #97CB52;
+			line-height: -0.5;
+			background-color: #fff;
+			&:hover{
+				color: #fff;
+				background-color: #97CB52;
+			}
+			i{
+				font-size: 17px;
+				font-weight: 900;
+				line-height: 14px;
+				margin-bottom: -3px;
+				display: inline-block;
+			}
+			&:last-of-type{
+				margin-left: 30px;
+			}
+		}
+	}
+}
+
+div#view_feed_re{
+	div.modal-header{
+		border-bottom: none;
+		padding: 15px 15px 0 15px;
+	}
+	h4.modal-title{
+		@include fmedium;
+		font-size: 30px;
+		text-align: center;
+		color: #399DD0;
+	}
+	button.close{
+		color: #97CB52;
+		@include fmedium;
+		font-weight: 900;
+		font-size: 30px;
+		opacity: 0.5;
+		margin-top: -10px;
+	}
+	div.modal-body{
+		p{
+			@include flight;
+			font-size: 16px;
+			color: #000;
+			border: 1px #ADADAD solid;
+			border-radius: 1px;
+			margin-bottom: 10px;
+			padding: 15px 10px;
+		}
+		textarea{
+            width: 500px;
+            height: 400px;
+            resize: none;
+            overflow-y: scroll;
+            margin: 0 33px;
+        }
+	}
+	div.modal-footer{
+		border-top: none;
+		padding: 0 15px 15px 15px;
+		text-align: center;
+		button{
+			@include fregular;
+			font-size: 14px;
+			padding: 2px 12px;
+			width: 170px; height: 30px;
+			border: 2px #97CB52 solid;
+			border-radius: 4px;
+			color: #97CB52;
+			line-height: -0.5;
+			background-color: #fff;
+			&:hover{
+				color: #fff;
+				background-color: #97CB52;
+			}
+			i{
+				font-size: 17px;
+				font-weight: 900;
+				line-height: 14px;
+				margin-bottom: -3px;
+				display: inline-block;
+			}
+			&:last-of-type{
+				margin-left: 30px;
+			}
+		}
+	}
+}
+
 div.add-hotel{
     @mixin small{
         @include flight;
@@ -876,14 +1023,14 @@ div.add-hotel{
 		border-top: none;
 		padding: 0 15px 15px 15px;
 		text-align: center;
-		button{
+		a, button{
 			@include button;
 			&:last-of-type{
 				margin-right: 100px;
 			}
 		}
                 &.step6{
-                    button{
+                    a, button{
                         width: 250px;
                         &:last-of-type{
 				margin-right: 0;
@@ -3350,7 +3497,7 @@ footer{
 		}
 	}
 
-	div#view_feed{
+	div#view_feed, div#view_feed_empty, div#view_feed_re{
 
 		div.modal-footer{
 			button{

@@ -31,6 +31,7 @@ $.ajax({
     data: 'hotel_id='+$('#hotel_id').val(),
     success: function(rdata){
         rooms = JSON.parse(rdata);
+        get_book(today.getFullYear(), today.getMonth(), rooms[0].id);
     }
 });
 
@@ -48,11 +49,11 @@ var first_days = (now.getDay() == 0) ? 6 : (now.getDay()-1);
 now = new Date(today.getFullYear(), today.getMonth(), mdays[now.getMonth()], 0, 0, 0, 0);
 var last_days = (now.getDay() == 0) ? 0 : ( 7- now.getDay());
 var book=[];
-function get_book(year, month){
+function get_book(year, month, room_id){
     $.ajax({
           url: baseUrl+'getbook',
           type:'post',
-          data:'year='+year+'&month='+month,
+          data:'year='+year+'&month='+month+'&room_id='+room_id,
           success: function(data){
               book = JSON.parse(data);
               if (first_days > 0) table ='<tr>';
@@ -116,11 +117,6 @@ function add_click(){
     	})
     });
 }
-
-get_book(today.getFullYear(), today.getMonth());
-
-
-
 
 //календарь конец
 
@@ -249,6 +245,7 @@ $('.room-list ul li').each(function(){
             });
             $(this).addClass('active');
             roomNum=$(this).find('input').val();
+            get_book(today.getFullYear(), today.getMonth(), rooms[roomNum].id);
             $('#e_title').val(rooms[roomNum].title);
             $('#e_about').val(rooms[roomNum].about);
             $('#e_price').val(rooms[roomNum].price);

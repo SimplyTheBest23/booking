@@ -18,6 +18,8 @@ class CreateSms extends Migration
             $table->char('destination',12);
             $table->string('message');
             $table->string('about');
+            $table->string('status');
+            $table->string('turbo_id');
             $table->timestamps();
         });
     }

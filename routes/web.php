@@ -34,6 +34,7 @@ Route::post('/main/login', 'MainController@login');
 Route::post('/main/putfeed', 'MainController@putFeed');
 Route::post('/feeds/getlist', 'MainController@feedsList');
 Route::post('/feeds/save', 'MainController@feedsSave');
+Route::post('/feeds/re', 'MainController@feedsRe');
 Route::post('getbook', 'RoomsController@getBook');
 Route::group(['middleware'=>'CheckLogin'],function(){// only register users
     Route::get('/cabinet', 'MainController@cabinet');
@@ -53,4 +54,6 @@ Route::get('admin/features', 'AdminController@features');
 Route::get('admin/sms', 'AdminController@sms');
 Route::get('admin/cities', 'AdminController@cities');
 Route::get('admin/other', 'AdminController@other');
+Route::post('admin/hotelinfo', 'AdminController@hotelinfo');
+Route::post('admin/roomsinfo', 'AdminController@roomsinfo');
 //end edmin

@@ -33,6 +33,14 @@ class AdminController extends Controller
         $all_visits = visit::sum('visits');
         $visit24 = visit::where('updated_at','>',date('Y-m-d H:i:s',time()-24*60*60))->sum('visits');
         $visit1 = visit::where('updated_at','>',date('Y-m-d H:i:s',time()-60*60))->sum('visits');
+        $client = new \SoapClient('http://turbosms.in.ua/api/wsdl.html');
+        $auth = [
+        'login' => 'SiriusWiFi',
+        'password' => 'babka007',
+        ];
+        $client->Auth($auth);
+        $sms_amount = $client->GetCreditBalance();
+        $sms_all = SmsModel::where('turbo_id','!=','null')->count();
         $data = ['active'=>$active,
                 'passive'=>$passive,
                 'all_adds'=>$all_adds,
@@ -40,6 +48,8 @@ class AdminController extends Controller
                 'all_visits'=>$all_visits,
                 'visit24'=>$visit24,
                 'visit1'=>$visit1,
+                'sms_amount'=>$sms_amount,
+                'sms_all'=>$sms_all,
         ];
         return view('admin/statistic', $data);
     }
@@ -86,5 +96,17 @@ class AdminController extends Controller
     {
         $data = [];
         return view('admin/other', $data);
+    }
+
+    public function hotelinfo(Request $request)
+    {
+        $hotel = hotels::find($request->hotel_id);
+        echo json_encode($hotel);
+    }
+
+    public function roomsInfo(Request $request)
+    {
+        $rooms = rooms::where('hotel_id', $request->id)->get();
+        echo json_encode($rooms);
     }
 }

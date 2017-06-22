@@ -133,9 +133,9 @@ class HotelsController extends Controller
      */
     public function update(Request $request, $hotel_id)
     {
-        if (!preg_match('/^\w{2,30}$/i' , $request->hotel['title'])) return 'error';
-        if (!preg_match('/^\w{5,50}$/i' , $request->hotel['address'])) return 'error';
-        if (!preg_match('/^\w{2,249}$/i' , $request->hotel['about'])) return 'error';
+        if (!preg_match('/^.{2,30}$/i' , $request->hotel['title'])) return 'error';
+        if (!preg_match('/^.{5,50}$/i' , $request->hotel['address'])) return 'error';
+        if (!preg_match('/^.{2,249}$/i' , $request->hotel['about'])) return 'error';
         if (!preg_match('/^\d{1,4}$/i' , $request->hotel['price'])) return 'error';
         if (!preg_match('/^\d{1,4}$/i' , $request->hotel['to_beach'])) return 'error';
         if (!preg_match('/^\d{1,4}$/i' , $request->hotel['to_shop'])) return 'error';
@@ -198,7 +198,7 @@ class HotelsController extends Controller
         $hotel = hotels::find($hotel_id);
         $user = User::find($hotel->user_id);
         $phone = phone::where('user_id','=',$user->id)->first();
-        $feeds = feed::where('hotel_id','=',$hotel->id)->get();
+        $feeds = feed::where('hotel_id','=',$hotel->id)->where('reight','!=','0')->get();
         $cities = cities::all();
         $hotel_types = hotelTypes::all();
         $data =[

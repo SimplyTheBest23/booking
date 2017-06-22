@@ -5,9 +5,9 @@
 <main>
     <div class="main_head">
         <ol class="path">
-          <li><a href="#">Головна</a></li>
-          <li><a href="#">Особистий кабінет</a></li>
-          <li><a href="#">аренда житла</a></li>
+          <li><a href="{{asset('/')}}">Головна</a></li>
+          <li><a href="{{asset('/cabinet')}}">Особистий кабінет</a></li>
+          <li><a href="{{asset('/cabinet')}}">аренда житла</a></li>
           <li class="active">платне оголошення</li>
         </ol>
         <div class="green"></div>
@@ -47,12 +47,12 @@
 @endforeach
                 </ul>
             </div>
-            <p>
+            <!-- <p>
                 Додатковий номер телефону
                 <a href="#">
                     <i class="fa fa-plus" aria-hidden="true"></i>
                 </a>
-            </p>
+            </p> -->
             <label for="e_title"><small>Назва оголошення</small></label>
             <input type="text" value="{{$hotel->title}}" class="form-control col-xs-12" id="e_title">
 

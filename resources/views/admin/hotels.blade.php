@@ -113,7 +113,7 @@
 						<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#editModal" id="edit{{$hotel->id}}">
 							редактировать
 						</button>
-						<button class="btn btn-xs btn-info">просмотреть</button>
+						<a class="btn btn-xs btn-info" href="{{asset('hotel/'.$hotel->id)}}">просмотреть</a>
 						<button class="btn btn-xs btn-success">VIP</button>
 						<button class="btn btn-xs btn-success">TOP</button>
 						<button class="btn btn-xs btn-success">Сделать платным</button>
@@ -138,5 +138,9 @@
 	<input type="text" class="form-control" id='filter'>
 	<input type="submit" value="найти" class="form-control" id="find">
 </form>
-<script src="{{ url('js/admin_ads.js')}}"></script>
+
+<script>
+var baseUrl='../';
+</script>
+<script src="{{ url('js/admin/admin_ads.js')}}"></script>
 @endsection

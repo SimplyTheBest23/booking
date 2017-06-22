@@ -4,7 +4,7 @@
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
   });
-
+console.log('new main 21.06');
 mask('add_user_phone');
 mask('login_phone');
 mask4('add_beach');
@@ -153,6 +153,16 @@ var ver=verify([['add_hotel_name','name'],['add_hotel_type','num'],['add_hotel_r
       if (!ver || hPhotoNum<1){
           return false;
       } else{
+          phone = $('#add_user_phone').val();
+          phone = phone.replace(/\+/,'');
+          phone = phone.replace(/\(/,'');
+          phone = phone.replace(/\)/,'');
+          phone = phone.replace(/[ ]{1}/,'');
+          phone = phone.replace(/[-]{1}/,'');
+          phone = phone.replace(/[ ]{1}/,'');
+          phone = phone.replace(/[-]{1}/,'');
+          user.phone = phone;
+          user.name = $('#add_user_name').val();
           hotel.photos = hotelPhotos;
           hotel.title = $('#add_hotel_name').val().trim();
           hotel.hotel_type_id = $('#add_hotel_type').val();
@@ -250,6 +260,14 @@ var ver=verify([['add_city','num'],['add_address','text'],['add_beach','num'],['
       if (!ver){
           return false;
       } else {
+          hotel.city_id = $('#add_city').val();
+          if (marker){
+              var location = marker.getPosition();
+              lat =location.lat();
+              lng = location.lng();
+              hotel.gps_alt = lng;
+              hotel.gps_lng = lat;
+          }
           hotel.address = $('#add_address').val();
           hotel.to_beach = $('#add_beach').val();
           hotel.to_shop = $('#add_shop').val();
@@ -367,6 +385,11 @@ function save_all(){
     hotel = {};
     user = {};
     rooms = [];
+    roomPhotos = [];
+    rPhotoNum=0;
+    hPhotoNum=0;
+    roomNum=0;
+    hotelPhotos = [];
     $('#hotel-photos').html('<li></li><li></li><li></li><li></li><li></li>');
     $('#room-photos').html('<li></li><li></li><li></li><li></li><li></li>');
     $.ajax({
@@ -374,7 +397,8 @@ function save_all(){
         type: 'POST',
         data: data,
         success: function(rdata){
-            $('#date_out').text(rdata.substr(0,10));
+            console.log(rdata);
+            $('#date_out').text(rdata.substr(0,11));
         }
     });
 }

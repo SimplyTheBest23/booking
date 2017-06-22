@@ -167,11 +167,11 @@
                     echo ' (';
                     echo substr($p, 2, 3);
                     echo ') ';
-                    echo substr($p, 5, 2);
+                    echo substr($p, 5, 3);
                     echo '-';
-                    echo substr($p, 7, 2);
+                    echo substr($p, 8, 2);
                     echo '-';
-                    echo substr($p, 10, 3);
+                    echo substr($p, 10, 2);
                     @endphp
                 </p>
             </div>

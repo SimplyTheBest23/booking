@@ -2,9 +2,8 @@
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }	
+    }
 });
-
 
 $('#find').click(function(){
 	var filter=$('#filter').val();
@@ -21,11 +20,11 @@ function adds_filter(filter){
 			$('#add_list tbody').html(list);
 			add_click();
 		}
-	})	
+	})
 }
 
 function add_click(){
-	$('#add_list button[id^="edit"]').each(function(){
+	$('#add_list button[id^="edit"]').each(function(){// tested
 		$(this).click(function(){
 			var id=$(this).attr('id').substr(4);
 			adInfo(id);
@@ -37,7 +36,7 @@ function add_click(){
 			var id=$(this).attr('id').substr(5);
 			rooms(id);
 		});
-	});	
+	});
 
 	$('#add_list button[id^="del"]').each(function(){
 		$(this).click(function(){
@@ -110,18 +109,17 @@ function room_del(id) {
 
 add_click();
 
-function adInfo(id){//проверено
+function adInfo(id){
 	$.ajax({
-		url:'../ajax/hotelinfo',
+		url: baseUrl+'admin/hotelinfo',
 		type:'POST',
-		data:'id='+id,
+		data:'hotel_id='+id,
 		success: function(data){
 			var add=JSON.parse(data);
-			$('#edit_name').val(add.name);
-			
+			$('#edit_name').val(add.title);
 			$('#edit_address').val(add.address);
 			$('#edit_id').val(add.id);
-			$('#edit_text').val(add.text);
+			$('#edit_text').val(add.about);
 			var date=new Date(add.created_at);
 			$('#create_date').val(date.toISOString().substr(0,10));
 			var date=new Date(add.date_out);
@@ -133,26 +131,39 @@ function adInfo(id){//проверено
 			var date=new Date(add.date_vip);
 			$('#date_vip').val(date.toISOString().substr(0,10));
 			$('#htype option').each(function(){
-				if ($(this).val()==add.type_id) $(this).attr('selected','selected');
+				if ($(this).val()==add.hotel_type_id) $(this).attr('selected','selected');
 			});
 			$('#city option').each(function(){
 				if ($(this).val()==add.city_id) $(this).attr('selected','selected');
 			});
-			$('#status option').each(function(){
-				if ($(this).val()==add.status_id) $(this).attr('selected','selected');
-			});
+			//console.log(data);
 		}
-	})	
+	})
 }
 
 function rooms(id){
 	$('#room_form').hide();
 	$.ajax({
-		url:'../ajax/roomsInfo',
+		url: baseUrl+'admin/roomsinfo',
 		type:'POST',
 		data:'id='+id,
 		success: function(data){
-			$('#rooms_list tbody').html(data);
+            //console.log(data);
+            room = JSON.parse(data);
+            var list = '';
+            for(i=0; i<room.length; i++){
+                list += '<tr class="ponter">';
+                list +='<td class="hidden">'+room[i].id+'</td>';
+                list +='<td>'+room[i].title+'</td>';
+                list +='<td>'+room[i].beds+' сп.м.</td>';
+                list +='<td>'+room[i].price+' грн.</td>';
+                var url= 'room/'+room[i].id;
+                list +='<td><a href="'+url+'" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-info-sign"></span></a</td>';
+                list +='<td><button id="room_e'+room[i].id+'" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></td>';
+                list +='<td><button id="room_d'+room[i].id+'" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button></td>';
+                list +='</tr>';
+            }
+			$('#rooms_list tbody').html(list);
 			room_click();
 		}
 	})

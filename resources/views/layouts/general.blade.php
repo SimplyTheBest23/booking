@@ -505,12 +505,12 @@
                     </div>
 	      </div>
 	      <div class="modal-footer step6">
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#add_hotel_1"  data-dismiss="modal">
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#add_hotel_3"  data-dismiss="modal">
 	        	Подати ще одне оголошення
 	        </button>
-	        <button id="next6" type="button" class="btn btn-default pull-right" data-dismiss="modal" >
+	        <a id="next6" href="{{asset('cabinet')}}" class="btn btn-default pull-right">
 		        Перейти в особистий кабінет
-	        </button>
+	        </a>
 	      </div>
 	    </div>
 
@@ -524,7 +524,11 @@
 		</a>
 		<nav>
 			<button class="btn btn-warning btn-sm"  data-toggle="modal" data-target="#modal_login">Мій профіль</button>
-			<button  class="btn btn-info btn-sm" data-toggle="modal" data-target="#add_hotel_1">Подати оголошення</button>
+            @if(session('user_id'))
+                <button  class="btn btn-info btn-sm" data-toggle="modal" data-target="#add_hotel_3">Подати оголошення</button>
+            @else
+                <button  class="btn btn-info btn-sm" data-toggle="modal" data-target="#add_hotel_1">Подати оголошення</button>
+            @endif
 		</nav>
 		<div class="input-group">
 				<input type="text" placeholder="Введіть текст" name="seach" class="form-control input-sm col-xs-6" id="text_search">

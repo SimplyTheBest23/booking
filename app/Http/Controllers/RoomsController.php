@@ -107,8 +107,8 @@ class RoomsController extends Controller
      */
     public function update(Request $request)
     {
-        if (!preg_match('/^\w{1,50}$/i' , $request->title)) return 'error';
-        if (!preg_match('/^\w{1,249}$/i' , $request->about)) return 'error';
+        if (!preg_match('/^.{1,50}$/i' , $request->title)) return 'error';
+        if (!preg_match('/^.{1,249}$/i' , $request->about)) return 'error';
         if (!preg_match('/^\d{1,4}$/i' , $request->price)) return 'error';
         if (!preg_match('/^\d{1,2}$/i' , $request->beds)) return 'error';
         if (!preg_match('/^[01]$/i' , $request->price_type)) return 'error';
@@ -199,8 +199,6 @@ class RoomsController extends Controller
 
     public function setBook(Request $request)
     {
-        if (!preg_match('/^\d{1,2}$/i' , $request->day)) return 'error';
-        if (!preg_match('/^\d{1,}$/i' , $request->room)) return 'error';
         $day=$request->day;
         $room_id = $request->room;
         echo 'room='.$room_id;
@@ -221,8 +219,9 @@ class RoomsController extends Controller
 
     public function getBook(Request $request)
     {
-        if (!preg_match('/^\d{4}$/i' , $request->year)) return 'error';
-        if (!preg_match('/^\d{1,2}$/i' , $request->month)) return 'error';
+        if (!preg_match('/^\d{4}$/i' , $request->year)) return 'error Year';
+        if (!preg_match('/^\d{1,2}$/i' , $request->month)) return 'error month';
+        if (!preg_match('/^\d{1,}$/i' , $request->room_id)) return 'error room';
         $year = $request->year;
         $month = $request->month;
         $month++;
@@ -239,7 +238,7 @@ class RoomsController extends Controller
             }
             $end = $year.'-'.$month.'-01';
         }
-        $list = booking::where('day','>=',$start)->where('day','<',$end)->get();
+        $list = booking::where('day','>=',$start)->where('day','<',$end)->where('room_id','=',$request->room_id)->get();
         $book=[];
         for ($i=1; $i <=31 ; $i++) {
             $book[$i] = 0;

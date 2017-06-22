@@ -6,8 +6,8 @@
     <div class="main_head">
         <ol class="path">
           <li><a href="{{asset('/')}}">Головна</a></li>
-          <li><a href="#">Особистий кабінет</a></li>
-          <li><a href="#">аренда житла</a></li>
+          <li><a href="{{asset('cabinet')}}">Особистий кабінет</a></li>
+          <li><a href="{{asset('cabinet')}}">аренда житла</a></li>
           <li class="active">платне оголошення</li>
         </ol>
         <div class="green"></div>

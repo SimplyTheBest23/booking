@@ -16,11 +16,11 @@
           echo ' (';
           echo substr($p, 2, 3);
           echo ') ';
-          echo substr($p, 5, 2);
+          echo substr($p, 5, 3);
           echo '-';
-          echo substr($p, 7, 2);
+          echo substr($p, 8, 2);
           echo '-';
-          echo substr($p, 10, 3);
+          echo substr($p, 10, 2);
           @endphp
           ">
           <li class="active">Всі номера</li>
@@ -139,11 +139,11 @@
                             echo ' (';
                             echo substr($p, 2, 3);
                             echo ') ';
-                            echo substr($p, 5, 2);
+                            echo substr($p, 5, 3);
                             echo '-';
-                            echo substr($p, 7, 2);
+                            echo substr($p, 8, 2);
                             echo '-';
-                            echo substr($p, 10, 3);
+                            echo substr($p, 10, 2);
                             @endphp
                         </span>
                     </div>
@@ -184,7 +184,7 @@
                         <div class="grey"></div>
                         <p>
                         <span>{{$visit['price']}}</span> {{$visit['price_type']}}
-                                <a href="{{$visit['link']}}" class="pull-right">Детальніше
+                                <a href="{{asset($visit['link'])}}" class="pull-right">Детальніше
                                         <img src="../img/arrow.svg" alt='->'>
                                 </a>
                         </p>

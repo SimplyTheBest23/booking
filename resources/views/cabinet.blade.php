@@ -20,7 +20,7 @@ function setphone($phone){
     <div class="main_head">
         <ol class="path">
           <li><a href="{{asset('/')}}">Головна</a></li>
-          <li><a href="#">Особистий кабінет</a></li>
+          <li><a href="{{asset('/cabinet')}}">Особистий кабінет</a></li>
           <li class="active">Мої оголошення</li>
         </ol>
         <div class="green greenf"></div>
@@ -64,7 +64,7 @@ function setphone($phone){
         <ul class="caption">
 			<li>Всі Ваші оголошення</li>
 			<li>Статус</li>
-            <li>Рубріка</li>
+            <li>Рубрика</li>
 		</ul>
         @foreach($hotels as $hotel)
         <aside class="add">
