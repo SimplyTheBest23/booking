@@ -4,7 +4,6 @@
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
   });
-console.log('new main 21.06');
 mask('add_user_phone');
 mask('login_phone');
 mask4('add_beach');

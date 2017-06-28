@@ -19,13 +19,15 @@ use Svityaz\Models\phone;
 use Svityaz\Models\feed;
 use Svityaz\Models\visit;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class MainController extends Controller
 {
     public function checkCode(Request $request)//проверяет код из СМС
     {
         $phone = $request->phone;
-        $code = sms_code::where('phone', '=', $phone)->first();
+        $code = sms_code::where('phone', '=', $phone)->orderBy('id', 'asc')->first();
         if (!$code){//телефон не найден
             echo false;
         } else {
@@ -181,10 +183,10 @@ class MainController extends Controller
         } else{
             if (!preg_match('/^\d{12}$/i' , $request->phone)) return 'error phone';
             if (!preg_match('/^.{2,50}$/i' , $request->password)) return 'error password';
-            $phone = phone::where('phone','=',$request->phone)->first();
+            $phone = phone::where('phone','=',$request->phone)->orderBy('id', 'asc')->first();
             if ($phone){
                 $user = User::find($phone->user_id);
-                if (strtoupper($request->password) == $user->password){
+                if (strtoupper($request->password) == $user->password && $user->role>0){
                         session(['user_id' => $user->id]);
                         echo true;
                     }
@@ -200,7 +202,7 @@ class MainController extends Controller
     public function setCode(Request $request)//устанавливаем новый пароль
     {
         if (!preg_match('/^\d{12}$/i' , $request->phone)) return 'error';
-        $phone = phone::where('phone','=',$request->phone)->first();
+        $phone = phone::where('phone','=',$request->phone)->orderBy('id', 'asc')->first();
         if ($phone){//телефон есть в базе
             $user = User::find($phone->user_id);
 
@@ -245,12 +247,22 @@ class MainController extends Controller
             $feed->hotel_id = $request->hotel_id;
             $feed->status =1;
             $feed->save();
-            $phone = phone::where('user_id','=',$user->id)->first();
+            $phone = phone::where('user_id','=',$user->id)->orderBy('id', 'asc')->first();
             SmsModel::send($phone->phone, 'новий відгук по '.$hotel->title, 'відгук');
         } else{
             //SmsModel::send($request->phone, 'відгук на своє оголошення заборонений!', 'блок відгука');
         }
-        $feeds = feed::where('hotel_id','=',$hotel->id)->latest()->take(4)->get();
+        $feeds = feed::where('hotel_id','=',$hotel->id)->where('reight','!=',0)->latest()->take(4)->get();
+        for($i=1;$i<count($feeds);$i++){
+            if ($feeds[$i]->feed_id>0){
+                $rfeed = feed::find($feeds[$i]->feed_id);
+                $feeds[$i]->re = $rfeed->comment;
+                $feeds[$i]->rname = $rfeed->name;
+            } else{
+                $feeds[$i]->re ='';
+                $feeds[$i]->name ='';
+            }
+        }
         echo json_encode($feeds);
     }
 
@@ -282,7 +294,7 @@ class MainController extends Controller
         $feed->status = 2;
         $nfeed = new feed;
         $nfeed->comment = $request->re;
-        $nfeed->phone = phone::where('user_id', '=', session('user_id'))->first()->value('phone');
+        $nfeed->phone = phone::where('user_id', '=', session('user_id'))->orderBy('id', 'asc')->first()->value('phone');
         $nfeed->name = User::where('id', '=', session('user_id'))->first()->value('name');
         $nfeed->reight = 0;
         $nfeed->hotel_id = $feed->hotel_id;
@@ -294,7 +306,7 @@ class MainController extends Controller
 
     public function cabinet(){
         $user = User::find(session('user_id'));
-        $phones = phone::where('user_id','=',$user->id)->get();
+        $phones = phone::where('user_id','=',$user->id)->orderBy('id', 'asc')->get();
         $hotels = HotelModel::where('user_id','=',$user->id)->get();
         $cities = cities::all();
         $hotel_types = hotelTypes::all();
@@ -307,21 +319,6 @@ class MainController extends Controller
             'cuser'=>User::getCurrent(),
         ];
         return view('cabinet', $data);
-    }
-
-    public function testPost(Request $request)
-    {
-        echo 'start';
-        $user = $request->user;
-        var_dump($user['name']);
-        if (!preg_match('/^.{1,5}$/i' , $user['name'])) return 'error';
-        echo ' end';
-    }
-
-    public function testGet()
-    {
-        echo 'start... ';
-        echo preg_match('/^.{2,20}$/i' , 'Владиммир');
     }
 
     public function saveUserData(Request $request)
@@ -337,7 +334,7 @@ class MainController extends Controller
         }
         $phones = $request->phones;
         if ($phones){
-            $first = phone::where('user_id','=',session('user_id'))->first();
+            $first = phone::where('user_id','=',session('user_id'))->orderBy('id', 'asc')->first();
             $first_phone = $first->phone;
             phone::where('user_id','=',session('user_id'))->delete();
             phone::insert([
@@ -359,5 +356,50 @@ class MainController extends Controller
             }
         }
         echo "OK";
+    }
+
+    public function feedSendCode(Request $request){//отправка СМС с кодом
+      $phone = $request->phone;
+      $hotel_id = $request->hotel;
+      $about = $request->about;
+      $hotel = HotelModel::find($hotel_id);
+      $db_phone = phone::where('phone', '=', $phone)->orderBy('id', 'asc')->first();
+      $owner = false;
+      if ($db_phone){
+          if ($db_phone->user_id == $hotel->user_id){
+              $owner = true;
+          }
+      }
+      if ($owner == false){
+          if (count(sms_code::where('phone','=',$phone)->get())>0){//телефон уже есть втаблице кодов
+            $code =sms_code::where('phone','=',$phone)->orderBy('id', 'asc')->first();
+          } else{
+            $code = new sms_code;
+            $code->phone = $phone;
+          }
+          $code->code = genpass::genPass();//генерация нового кода
+          $code->save();
+          SmsModel::send($phone, 'пароль:'.$code->code, $about);
+          echo 1;
+      } else {
+          echo 0;
+      }
+    }
+
+    public function testPost(Request $request)
+    {
+        echo 'start';
+        $user = $request->user;
+        var_dump($user['name']);
+        if (!preg_match('/^.{1,5}$/i' , $user['name'])) return 'error';
+        echo ' end';
+    }
+
+    public function testGet()
+    {
+        echo 'start... <br>';
+        $list = feed::list(1);
+        var_dump($list);
+
     }
 }

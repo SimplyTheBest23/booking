@@ -7,7 +7,7 @@
           <li><a href="{{asset('/')}}">Головна</a></li>
           <li><a href="{{asset('cabinet')}}">Оголошення</a></li>
           <li><a href="{{asset('cabinet')}}">Оренда житла</a></li>
-          <li class="active">Кращий відпочинок на озері</li>
+          <li class="active">{{$hotel->title}}</li>
         </ol>
         <div class="green"></div>
         <div class="grey grey-hotel"></div>
@@ -148,6 +148,7 @@
                     <article>
                         {{$hotel->about}}
                     </article>
+                    @if (session('user_id')!=$hotel->user_id)
                     <form action="#" id="feed_form">
                         <h2>Залишити відгук</h2>
                         <h3>Оберить тип відгуку
@@ -168,8 +169,12 @@
                         <input type="submit" value="Перевірити" class="btn btn-warning hidden" id="code_but">
                         <input type="submit" value="Відправити" class="btn btn-info btn-sm" id="send_feed">
                     </form>
+                    @endif
+
                 </div>
             </aside>
+            <div id="alert-block">
+            </div>
             <aside class="feeds">
                 <h2>Відгуки</h2>
                 @php
@@ -209,6 +214,12 @@
                         <p>{{$feed->comment}}</p>
                         <a href="#">Ще</a>
                     </div>
+                    @if($feed->feed_id>0)
+                        <div class="feed feed-re">
+                            <h3><span class="re"></span>{{$feed->rname}}</h3>
+                            <p>{{$feed->re}}</p>
+                        </div>
+                    @endif
                 @endforeach
                 @if (Count($feeds)>1)
                     <button class="btn btn-info" id="all_feeds">Ще відгуки</button>
@@ -271,7 +282,7 @@
                     echo '-';
                     echo substr($p, 8, 2);
                     echo '-';
-                    echo substr($p, 9, 2);
+                    echo substr($p, 10, 2);
                     @endphp
                 </p>
             </div>

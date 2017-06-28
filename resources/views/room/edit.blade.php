@@ -7,8 +7,9 @@
         <ol class="path">
           <li><a href="{{asset('/')}}">Головна</a></li>
           <li><a href="{{asset('cabinet')}}">Особистий кабінет</a></li>
-          <li><a href="{{asset('cabinet')}}">аренда житла</a></li>
-          <li class="active">платне оголошення</li>
+          <li><a href="{{asset('cabinet')}}">Оренда житла</a></li>
+          <li><a href="{{asset('hotel/'.$hotel->id.'/edit')}}">{{$hotel->title}}</a></li>
+          <li class="active">Номери</li>
         </ol>
         <div class="green"></div>
         <div class="grey grey-hotel"></div>

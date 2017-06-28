@@ -11,6 +11,7 @@ use Svityaz\User;
 use Svityaz\Models\phone;
 use Svityaz\Models\booking;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class RoomsController extends Controller
 {
@@ -57,8 +58,8 @@ class RoomsController extends Controller
         $room = rooms::findOrFail($room_id);
         $hotel = hotels::findOrFail($room->hotel_id);
         $user = User::findOrFail($hotel->user_id);
-        //$phone = phone::findOrFail($hotel->user_id);
-        $phone = phone::where('user_id','=',$hotel->user_id)->first();
+        /////$phone = phone::findOrFail($hotel->user_id);
+        $phone = phone::where('user_id','=',$hotel->user_id)->orderBy('id', 'asc')->first();
         $city = cities::findOrFail($hotel->city_id);
         $cities = cities::all();
         $hotel_types = hotelTypes::all();
@@ -85,7 +86,7 @@ class RoomsController extends Controller
         $rooms = rooms::where('hotel_id','=',$hotel_id)->get();
         $hotel = hotels::findOrFail($hotel_id);
         $user = User::findOrFail($hotel->user_id);
-        $phone = phone::where('user_id','=',$hotel->user_id)->first();
+        $phone = phone::where('user_id','=',$hotel->user_id)->orderBy('id', 'asc')->orderBy('id', 'asc')->first();
         $cities = cities::all();
         $hotel_types = hotelTypes::all();
         $data = ['cities' => $cities,
@@ -155,7 +156,7 @@ class RoomsController extends Controller
         $rooms = rooms::list(1, $id);
         $hotel = hotels::findOrFail($id);
         $user = User::findOrFail($hotel->user_id);
-        $phone = phone::where('user_id','=',$hotel->user_id)->first();
+        $phone = phone::where('user_id','=',$hotel->user_id)->orderBy('id', 'asc')->orderBy('id', 'asc')->first();
         $cities = cities::all();
         $hotel_types = hotelTypes::all();
         $visit_list = [];

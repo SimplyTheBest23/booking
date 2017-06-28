@@ -7,6 +7,7 @@
 
 mask('form_tel');
 
+
 function getSms(){//функция получения СМС
   $.ajax({
         url: baseUrl+'sms/smsget',
@@ -17,6 +18,17 @@ function getSms(){//функция получения СМС
           alert(mess);
         }
   });
+}
+
+function setAlert(header, text, clas){
+    var al = '<div class="alert alert-dismissable ';
+    al += clas;
+    al += '"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>'
+    al += header;
+    al += '</strong> <span>';
+    al += text;
+    al += '</span></div>';
+    $('#alert-block').html(al);
 }
 
 $('#form_text').click(function(){
@@ -30,14 +42,19 @@ $('#send_feed').click(function(){
     if (ver){
         var phone= getPhone($('#form_tel').val());
         $.ajax({
-            url: baseUrl+'sms/smssendcode',
+            url: baseUrl+'feedSendCode',
             type:'post',
-            data:'phone='+phone+'&about=перевірка телефону',
+            data:'phone='+phone+'&about=залишаємо відгук'+'&hotel='+$('#hotel_id').val(),
             success: function(data){
-                $('#code_but').removeClass('hidden');
-                $('#code_feed').removeClass('hidden');
-                $('#send_feed').addClass('hidden');
-                getSms();
+                if (data == '0'){
+                    $('#feed_form').hide();
+                } else{
+                    $('#code_but').removeClass('hidden');
+                    $('#code_feed').removeClass('hidden');
+                    $('#send_feed').addClass('hidden');
+                    setAlert('Дякуємо!', 'Ваш зворотній відгук відправлено.', 'alert-success');
+                    getSms();
+                }
             }
     	});
     }
@@ -74,7 +91,6 @@ $('#code_but').click(function(){//send feed by click
                         type:'post',
                         data: feed,
                         success: function(data){
-                            console.log(data);
                             var feeds = JSON.parse(data);
                             var list='';
                             var plus=0;
@@ -102,6 +118,12 @@ $('#code_but').click(function(){//send feed by click
                                 list += '</span></h3><p>';
                                 list += feeds[i].comment;
                                 list += '</p><a href="#">Ще</a></div>';
+                                if(feeds[i].feed_id > 0){
+                                    list += '<div class="feed feed-re">';
+                                    list += '<h3><span class="re"></span>'+feeds[i].rname+'</h3>';
+                                    list += '<p>'+feeds[i].re+'</p>';
+                                    list += '</div>';
+                                }
                             }
                             $('#reight_plus').text(plus);
                             $('#reight_minus').text(minus);

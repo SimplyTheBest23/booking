@@ -3,6 +3,7 @@
 namespace Svityaz\Http\Controllers;
 
 use Svityaz\Models\hotels;
+use Svityaz\Models\rooms;
 use Illuminate\Http\Request;
 use Svityaz\Models\cities;
 use Svityaz\Models\hotelTypes;
@@ -10,6 +11,7 @@ use Svityaz\User;
 use Svityaz\Models\phone;
 use Svityaz\Models\feed;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class HotelsController extends Controller
 {
@@ -67,11 +69,24 @@ class HotelsController extends Controller
             Cache::put('visit',implode(',',$visit),480);
         }
         $user = User::findOrFail($hotel->user_id);
-        $phone = phone::where('user_id','=',$hotel->user_id)->first();
+        $phone = phone::where('user_id','=',$hotel->user_id)->orderBy('id', 'asc')->first();
         $cities = cities::all();
         $hotel_types = hotelTypes::all();
         $city = cities::findOrFail($hotel->city_id);
-        $feeds = feed::where('hotel_id','=',$hotel->id)->latest()->take(4)->get();
+        $feeds = feed::where('hotel_id','=',$hotel->id)->where('reight','!=',0)->latest()->take(4)->get();
+        for($i=0;$i<count($feeds);$i++){
+            if ($feeds[$i]->feed_id>0){
+                $rfeed = feed::find($feeds[$i]->feed_id);
+                $feeds[$i]->re = $rfeed->comment;
+                $feeds[$i]->rname = $rfeed->name;
+                //echo 'id='.$feeds[$i]->feeds_id.'<br>';
+                //echo 're='.$feeds[$i]->re.'<br>';
+            } else{
+                //echo 'no re <br>';
+                $feeds[$i]->re ='no re';
+                $feeds[$i]->name ='noname';
+            }
+        }
         $visit_list = [];
         if (Cache::has('visit')){
             $visit = explode(',', Cache::get('visit'));
@@ -110,6 +125,9 @@ class HotelsController extends Controller
     {
         $hotel = hotels::findOrFail($id);
         $user = User::findOrFail($hotel->user_id);
+        if ($hotel->user_id != session('user_id')){
+            return redirect('cabinet');
+        }
         $phones = phone::where('user_id','=',$hotel->user_id)->get();
         $cities = cities::all();
         $hotel_types = hotelTypes::all();
@@ -182,9 +200,38 @@ class HotelsController extends Controller
      * @param  \Svityaz\Model\hotels  $hotels
      * @return \Illuminate\Http\Response
      */
-    public function destroy(hotels $hotels)
+    public function destroy($id)
     {
-        //
+        $hotel = hotels::find($id);
+        $rooms = rooms::where('hotel_id','=',$id)->get();
+        foreach ($rooms as $room) {
+            $room->delete();
+        }
+        $hotel->delete();
+        echo 'deleted hotel id='.$id;
+    }
+
+    public function delete($id)
+    {
+        $hotel = hotels::find($id);
+        if ($hotel->user_id == session('user_id')){
+            $rooms = rooms::where('hotel_id','=',$id)->get();
+            foreach ($rooms as $room) {
+                $room->delete();
+            }
+            $hotel->delete();
+        }
+        $visit_list = [];
+        if (Cache::has('visit')){
+            $visit = explode(',', Cache::get('visit'));
+            foreach ($visit as $v) {
+                if (substr($v,0,1) != 'h' &&  $id != substr($v,1)){
+                    $visit_list[] = 'h'.substr($v,1);
+                }
+            }
+            Cache::put('visit',implode(',',$visit_list),480);
+        }
+        return redirect('cabinet');
     }
 
     public function paggination(Request $request)
@@ -196,8 +243,11 @@ class HotelsController extends Controller
     public function feeds($hotel_id)
     {
         $hotel = hotels::find($hotel_id);
+        if ($hotel->user_id!=session('user_id')){
+            return redirect('cabinet');
+        }
         $user = User::find($hotel->user_id);
-        $phone = phone::where('user_id','=',$user->id)->first();
+        $phone = phone::where('user_id','=',$user->id)->orderBy('id', 'asc')->first();
         $feeds = feed::where('hotel_id','=',$hotel->id)->where('reight','!=','0')->get();
         $cities = cities::all();
         $hotel_types = hotelTypes::all();

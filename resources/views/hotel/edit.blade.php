@@ -1,14 +1,41 @@
 @extends('layouts.general')
 
 @section('content')
+<!-- Modal Delete-->
+    <div id="modal_delete_hotel" class="modal fade add-hotel" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <h4>Ви дійсно бажаєте видалити це оголошення?</h4>
+                </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default"  data-dismiss="modal">
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+                   &nbsp;&nbsp;&nbsp;Повернутися
+                <i class="fa fa-angle-" aria-hidden="true"></i>
+             </button>
+            <a class="btn btn-default pull-right" href="{{asset('deleteHotel/'.$hotel->id)}}">
+                Видалити
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+<!-- END MODAL Delete-->
+
 <input type="hidden" id ="hotel_id" value="{{$hotel->id}}">
 <main>
     <div class="main_head">
         <ol class="path">
           <li><a href="{{asset('/')}}">Головна</a></li>
           <li><a href="{{asset('/cabinet')}}">Особистий кабінет</a></li>
-          <li><a href="{{asset('/cabinet')}}">аренда житла</a></li>
-          <li class="active">платне оголошення</li>
+          <li><a href="{{asset('/cabinet')}}">Оренда житла</a></li>
+          <li class="active">{{$hotel->title}}</li>
         </ol>
         <div class="green"></div>
         <div class="grey grey-hotel"></div>
@@ -23,7 +50,7 @@
                 <a href="#" class="btn btn-default">Зробити ВІП</a>
                 <a href="#" class="btn btn-default">Зробити платним</a>
                 <a href="{{asset('/hotel/'.$hotel->id.'/feeds')}}" class="btn btn-default">Відгуки</a>
-                <a href="#" class="btn btn-default">Видалити</a>
+                <a href="#" class="btn btn-default" data-toggle="modal" data-target="#modal_delete_hotel">Видалити</a>
             </menu>
         </aside>
         <aside class="info1">

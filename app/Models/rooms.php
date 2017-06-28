@@ -3,10 +3,13 @@
 namespace Svityaz\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class rooms extends Model
 {
     //
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
     static function list($page, $hotel_id, $filter = false){
         $num = 5;
         $c = \DB::select('select count(id) as c from rooms where hotel_id='.$hotel_id);

@@ -36,6 +36,7 @@ Route::post('/feeds/getlist', 'MainController@feedsList');
 Route::post('/feeds/save', 'MainController@feedsSave');
 Route::post('/feeds/re', 'MainController@feedsRe');
 Route::post('getbook', 'RoomsController@getBook');
+Route::post('feedSendCode', 'MainController@feedSendCode');
 Route::group(['middleware'=>'CheckLogin'],function(){// only register users
     Route::get('/cabinet', 'MainController@cabinet');
     Route::get('/hotel/{hotel}/feeds', 'HotelsController@feeds');
@@ -43,17 +44,32 @@ Route::group(['middleware'=>'CheckLogin'],function(){// only register users
     Route::get('hotel/{hotel}/edit', 'HotelsController@edit');
     Route::post('changeuserdata', 'MainController@saveUserData');
     Route::post('setbook', 'RoomsController@setBook');
+    Route::get('deleteHotel/{id}', 'HotelsController@delete');
 });
 //admin
 Route::get('admin', 'AdminController@index');
 Route::get('admin/statistic', 'AdminController@statistic');
 Route::get('admin/hotels', 'AdminController@hotels');
 Route::get('admin/pays', 'AdminController@pays');
+Route::get('admin/users', 'AdminController@users');
+Route::post('admin/usersave', 'AdminController@userSave');
 Route::get('admin/paidservices', 'AdminController@paidservices');
 Route::get('admin/features', 'AdminController@features');
 Route::get('admin/sms', 'AdminController@sms');
 Route::get('admin/cities', 'AdminController@cities');
 Route::get('admin/other', 'AdminController@other');
 Route::post('admin/hotelinfo', 'AdminController@hotelinfo');
+Route::get('admin/roominfo/{id}', 'AdminController@roomInfo');
+Route::get('admin/userinfo/{id}', 'AdminController@userInfo');
 Route::post('admin/roomsinfo', 'AdminController@roomsinfo');
+Route::post('admin/filterhotels', 'AdminController@filterhotels');
+Route::post('admin/saveHotel', 'AdminController@saveHotel');
+Route::post('admin/saveRoom', 'AdminController@saveRoom');
+Route::delete('admin/room/{id}', 'AdminController@deleteRoom');
+Route::post('admin/editCity', 'AdminController@editCity');
+Route::post('admin/addCity', 'AdminController@addCity');
+Route::post('admin/citiesList', 'AdminController@citiesList');
+Route::get('admin/feeds', 'AdminController@feeds');
+Route::post('admin/filterfeeds', 'AdminController@filterFeeds');
+Route::put('admin/feedSt', 'AdminController@feedSt');
 //end edmin

@@ -9,6 +9,7 @@ use Svityaz\Models\hotels as HotelModel;
 use Illuminate\Support\Facades\Cache;
 use Svityaz\User;
 use Svityaz\Models\visit;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class HomeController extends Controller
 {

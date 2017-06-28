@@ -12,9 +12,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('/css/app.css')}}" rel="stylesheet">
-    <link href="{{ asset('/css/style.css')}}" rel="stylesheet">
+    <link href="{{ asset('/css/admin.css')}}" rel="stylesheet">
     <!-- Scripts -->
     <script src="{{asset('js/app.js')}}"></script>
+    <script src="{{asset('js/verify2.js')}}"></script>
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
@@ -78,7 +79,8 @@
                                       <li><a href="{{url('/admin/sms')}}">Настройки СМС</a></li>
                                       <li><a href="{{url('/admin/cities')}}">Список городов</a></li>
                                       <li><a href="{{url('/admin/other')}}">Другие настройки</a></li>
-
+                                      <li><a href="{{url('/admin/users')}}">Пользователи</a></li>
+                                      <li><a href="{{url('/admin/feeds')}}">Пользователи</a></li>
                                     </ul>
                                 </li>
                     </ul>
@@ -86,7 +88,9 @@
                 </div>
             </div>
         </nav>
+        <div id="alert-block">
 
+        </div>
         @yield('content')
     </div>
 

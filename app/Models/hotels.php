@@ -4,12 +4,18 @@ namespace Svityaz\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Svityaz\Models\phone;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Log;
 
 class hotels extends Model
 {
     //
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
     protected $table = 'hotels';
-    static function list($page, $filter = false){
+    static function list($page, $filter = false)
+    {
+        $now = Date('Y-m-d H:i:s', time());
     $fil = '';
     $ord = '';
     //return $filter['text'];
@@ -57,9 +63,11 @@ class hotels extends Model
         }
     }
         $num = 5;
-        $c = \DB::select('select count(hotels.id) as c from hotels where hotels.id in (select hotels.id from hotels, rooms where rooms.hotel_id=hotels.id '.$fil.' group by hotels.id)');
+        $c = \DB::select('select count(hotels.id) as c from hotels where hotels.id in (select hotels.id from hotels, rooms where hotels.deleted_at IS NULL and rooms.hotel_id=hotels.id and hotels.date_out>"'.$now.'" '.$fil.' group by hotels.id)');
         $count = $c[0]->c;//всего позиций
+        Log::info(' count='.$count);
         $pages = ceil($count / $num);//всего страниц
+        Log::info(' pages='.$pages);
         $pagg ='<ul class="pagg" id="hotel_pagg">';
         if ($page == 1){
             $pagg .= '<li class="disabled"><a href="#" id="prev_hotel"><</a></li>';
@@ -102,7 +110,7 @@ class hotels extends Model
             $pagg .= '<li><a href="#" id="next_hotel">></a></li>';
         }
         $s = 'select DISTINCT hotels.id as h_id from hotels, rooms';
-        $s .= ' where hotels.id=rooms.hotel_id '.$fil;
+        $s .= ' where hotels.deleted_at IS NULL  and hotels.date_out>"'.$now.'" and hotels.id=rooms.hotel_id '.$fil;
 
         $row = \DB::select($s);
         $imp ='';
@@ -115,13 +123,18 @@ class hotels extends Model
         if ($imp==''){
             $imp = 0;
         }
-        $sel = 'select * from hotels, users';
+        Log::info(' all hotels='.$imp);
+        Log::info(' fil='.$fil);
+        $sel = 'select hotels.id, users.name, hotels.user_id, hotels.foto1 ,hotels.title, hotels.address,
+        hotels.to_beach, hotels.rooms, hotels.lux, hotels.about, hotels.price, hotels.price_type,
+        hotels.date_vip, hotels.date_out, hotels.date_top, hotels.date_pay
+        from hotels, users';
         $sel .= ' where hotels.user_id=users.id and hotels.id in ('.$imp.')';
         $sel .= ' order by hotels.date_vip ASC, hotels.date_top ASC, hotels.date_pay ASC, hotels.date_up ASC ';
         $sel .= $ord.' limit ' . (($page - 1) * $num) . ',' .$num;
         $list = \DB::select($sel);
         for ($i=0; $i < count($list); $i++) {
-            $phone = phone::where('user_id','=',$list[$i]->user_id)->first();
+            $phone = phone::where('user_id','=',$list[$i]->user_id)->orderBy('id', 'asc')->first();
             $list[$i]->phone= $phone->phone;
         }
         $data = ['list'=>$list, 'pagg'=>$pagg,'count'=>$count];

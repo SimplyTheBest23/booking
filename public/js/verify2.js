@@ -12,6 +12,8 @@ function verify(arr){//функция проверки формы
 		if (arr[i][1]=='tel') reg=test.val().search(/\+38 \([0-9]{3}\) [0-9]{3}-[0-9]{2}-[0-9]{2}/);
 		if (arr[i][1]=='num') reg=test.val().search(/\d{1,}/);
 		if (arr[i][1]=='email') reg=test.val().search(/\w+@+\w+\.\w{2,5}/i);
+        if (arr[i][1]=='date') reg=test.val().search(/^\d{4}-\d{2}-\d{2}$/i);
+        if (arr[i][1]=='float') reg=test.val().search(/^\d{2}\.\d{1,}$/i);
 		if (arr[i][1]=='pass'){
 			reg=test.val().search(/\w{3,}/);
 			if (pass=='') pass=test.val();

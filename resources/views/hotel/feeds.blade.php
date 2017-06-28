@@ -97,8 +97,9 @@
         <ol class="path">
           <li><a href="{{asset('/')}}">Головна</a></li>
           <li><a href="{{asset('cabinet')}}">Особистий кабінет</a></li>
-          <li><a href="{{asset('cabinet')}}">сдача житла</a></li>
-          <li class="active">відгуки</li>
+          <li><a href="{{asset('cabinet')}}">Оренда житла</a></li>
+          <li><a href="{{asset('hotel/'.$hotel->id.'/edit')}}">{{$hotel->title}}</a></li>
+          <li class="active">Відгуки</li>
         </ol>
         <div class="green greenf"></div>
         <div class="grey grey-hotel greyf"></div>
@@ -122,11 +123,11 @@
         echo ' (';
         echo substr($p, 2, 3);
         echo ') ';
-        echo substr($p, 5, 2);
+        echo substr($p, 5, 3);
         echo '-';
-        echo substr($p, 7, 2);
+        echo substr($p, 8, 2);
         echo '-';
-        echo substr($p, 10, 3);
+        echo substr($p, 10, 2);
         @endphp
     </p></div>
     <div>{{$hotel->title}}</div>
