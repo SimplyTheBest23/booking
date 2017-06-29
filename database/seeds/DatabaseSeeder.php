@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
         //$this->call(cities::class);
         //$this->call(hotel_types::class);
         //$this->call(beach::class);
-        $this->call(admin::class);
+        //$this->call(admin::class);
+        //$this->call(paid_types::class);
+        //$this->call(paid_schemes::class);
     }
 }

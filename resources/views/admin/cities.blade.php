@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<h1 class="h3 text-success">Города</h1>
+<h1 class="h3 text-success">Міста</h1>
 	<div class="row">
 
 	<div class="col-md-4">
@@ -24,7 +24,7 @@
             <input type="text" name="gps_alt" placeholder="altitude..." id="e_alt"  class="form-control">
             <input type="text" name="gps_lng" placeholder="longtitude..." id="e_lng"  class="form-control">
             <input type="hidden" id="e_city_id" value="0" name="id">
-            <button class="btn btn-warning" id="e_city_but">Изменить</button>
+            <button class="btn btn-warning" id="e_city_but">Змінити</button>
         </form>
     </div>
 	<div class="col-md-2">
@@ -33,7 +33,7 @@
 				<input type="text" id="new_city_name"  class="form-control" name="city" placeholder="Назва...">
                 <input type="text" name="gps_alt" placeholder="altitude..." id="new_alt"  class="form-control">
                 <input type="text" name="gps_lng" placeholder="longtitude..." id="new_lng"  class="form-control">
-		    	<button class="btn btn-success" id="add_city">Добавить</button>
+		    	<button class="btn btn-success" id="add_city">Додати</button>
 		    </form>
 		</nav>
 	</div>

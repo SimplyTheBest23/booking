@@ -19,23 +19,23 @@
 	<div class="col-md-3">
 		<div id="user_info">
             <input type="hidden" id="user_id">
-			<h4>Имя: <span id="user_name"></span></h4>
+			<h4>Им'я: <span id="user_name"></span></h4>
 			<p id="user_phones">
             </p>
             <h5>Статус: <span id="user_role"></span></h5>
-			<p>Добавлен: <span id="user_date"></span></p>
+			<p>Доданий: <span id="user_date"></span></p>
 		</div>
 	</div>
 	<div class="col-md-2">
 		<form id="user_edit">
 			<select name="status" id="status" class="form-control">
-				<option value="-1">Выберите статус</option>
-					<option value="0">Отключён</option>
-                    <option value="1">Пользователь</option>
-                    <option value="2">Админ</option>
+				<option value="-1">Оберіть статус</option>
+					<option value="0">Блокований</option>
+                    <option value="1">Користувач</option>
+                    <option value="2">Адмін</option>
 			</select>
 			<input type="hidden" name="user_id" id="user_id">
-			<input type="submit" name="set_but" id="set_but" class="btn btn-warning form-control" value="изменить статус">
+			<input type="submit" name="set_but" id="set_but" class="btn btn-warning form-control" value="змінити статус">
 		</form>
 	</div>
 	<div class="col-md-2">

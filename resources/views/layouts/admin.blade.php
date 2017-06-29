@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Портал сдачи жилья</title>
+    <title>Світязь. Адмінка</title>
 
     <!-- Styles -->
     <link href="{{ asset('/css/app.css')}}" rel="stylesheet">
@@ -41,7 +41,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        Главная
+                        Головна
                     </a>
                 </div>
 
@@ -57,9 +57,9 @@
                                     <a href="{{ url('/admin/statistic')}}">Статистика</a></li>
 
                                 @if (url()->current()==url('/admin/hotels'))
-                                    <li class="active"><a href="{{ url('/admin/hotels')}}">Объявления</a></li>
+                                    <li class="active"><a href="{{ url('/admin/hotels')}}">Оголошення</a></li>
                                 @else
-                                    <li><a href="{{ url('/admin/hotels')}}">Объявления</a></li>
+                                    <li><a href="{{ url('/admin/hotels')}}">Оголошення</a></li>
                                 @endif
 
                                 @if (url()->current()==url('/admin/pays'))
@@ -67,20 +67,20 @@
                                 @else
                                     <li>
                                 @endif
-                                    <a href="{{url('/admin/pays')}}">Платежи</a></li>
+                                    <a href="{{url('/admin/pays')}}">Платежі</a></li>
 
 
                                 <li>
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Настройки
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Налаштування
                                     <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                      <li><a href="{{url('/admin/paidservices')}}">Настройки стоимости</a></li>
-                                      <li><a href="{{url('/admin/features')}}">Редактирование категорий</a></li>
-                                      <li><a href="{{url('/admin/sms')}}">Настройки СМС</a></li>
-                                      <li><a href="{{url('/admin/cities')}}">Список городов</a></li>
-                                      <li><a href="{{url('/admin/other')}}">Другие настройки</a></li>
-                                      <li><a href="{{url('/admin/users')}}">Пользователи</a></li>
-                                      <li><a href="{{url('/admin/feeds')}}">Пользователи</a></li>
+                                      <li><a href="{{url('/admin/paidservices')}}">Налаштування вартості</a></li>
+                                      <li><a href="{{url('/admin/features')}}">Категорії</a></li>
+                                      <li><a href="{{url('/admin/sms')}}">Налаштування СМС</a></li>
+                                      <li><a href="{{url('/admin/cities')}}">Перелік міст</a></li>
+                                      <li><a href="{{url('/admin/other')}}">Інші налаштування</a></li>
+                                      <li><a href="{{url('/admin/users')}}">Користувачі</a></li>
+                                      <li><a href="{{url('/admin/feeds')}}">Відгуки</a></li>
                                     </ul>
                                 </li>
                     </ul>

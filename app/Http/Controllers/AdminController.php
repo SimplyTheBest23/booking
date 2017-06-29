@@ -15,6 +15,8 @@ use Svityaz\Models\rooms;
 use Svityaz\Models\phone;
 use Svityaz\Models\feed;
 use Svityaz\Models\visit;
+use Svityaz\Models\paidScheme;
+use Svityaz\Models\paidType;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
@@ -52,7 +54,8 @@ class AdminController extends Controller
             }
         }
         $data = [];
-        return view('admin/index', $data);
+        return view('admin/login', $data);
+        //return view('admin/index', $data);
     }
     public function statistic(Request $request)
     {
@@ -121,7 +124,11 @@ class AdminController extends Controller
     }
     public function paidservices(Request $request)
     {
-        $data = [];
+        $paids = paidScheme::get();
+        $types = paidType::get();
+        $data = ['paids'=>$paids,
+                'types'=>$types
+                ];
         return view('admin/paidservices', $data);
     }
     public function features(Request $request)
@@ -367,5 +374,58 @@ class AdminController extends Controller
         }
 
         return '0';
+    }
+
+    public function addPayScheme(Request $request)
+    {
+        if (!preg_match('/^\d{1,}$/i' , $request->paid_type)) return 'error paid type';
+        $type = paidType::find($request->paid_type);
+        if (!$type) return 'error paid type';
+        if (!preg_match('/^.{2,50}$/i' , trim($request->paid_name))) return 'error name';
+        if (!preg_match('/^\d{1,5}$/i' , $request->paid_days)) return 'error days';
+        if (!preg_match('/^\d{1,6}$/i' , $request->paid_price)) return 'error paid price';
+        $s = new paidScheme;
+        $s->ptype_id = $request->paid_type;
+        $s->name = $request->paid_name;
+        $s->days = $request->paid_days;
+        $s->price = $request->paid_price;
+        $s->save();
+        return 0;
+    }
+
+    public function delPayScheme(Request $request)
+    {
+        $s = paidScheme::find($request->id);
+        if (!$s) return 'wrong id';
+        $s->delete();
+        return 0;
+    }
+
+    public function editPayScheme(Request $request)
+    {
+        if (!preg_match('/^\d{1,}$/i' , $request->paid_type)) return 'error paid type';
+        $type = paidType::find($request->paid_type);
+        if (!$type) return 'error paid type';
+        if (!preg_match('/^.{2,50}$/i' , trim($request->paid_name))) return 'error name';
+        if (!preg_match('/^\d{1,5}$/i' , $request->paid_days)) return 'error days';
+        if (!preg_match('/^\d{1,6}$/i' , $request->paid_price)) return 'error paid price';
+        if (!preg_match('/^\d{1,}$/i' , $request->paid_id)) return 'error id';
+        $s = paidScheme::find($request->paid_id);
+        if (!$s) return 'error id';
+        $s->ptype_id = $request->paid_type;
+        $s->name = $request->paid_name;
+        $s->days = $request->paid_days;
+        $s->price = $request->paid_price;
+        $s->save();
+        return 0;
+    }
+
+    public function showPayScheme(Request $request)
+    {
+        $s = paidScheme::get();
+        for ($i=0; $i < count($s) ; $i++) {
+            $s[$i]->type_name = $s[$i]->type->type;
+        }
+        echo json_encode($s);
     }
 }

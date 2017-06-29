@@ -72,4 +72,8 @@ Route::post('admin/citiesList', 'AdminController@citiesList');
 Route::get('admin/feeds', 'AdminController@feeds');
 Route::post('admin/filterfeeds', 'AdminController@filterFeeds');
 Route::put('admin/feedSt', 'AdminController@feedSt');
+Route::post('admin/addPayScheme', 'AdminController@addPayScheme');
+Route::post('admin/delPayScheme', 'AdminController@delPayScheme');
+Route::post('admin/editPayScheme', 'AdminController@editPayScheme');
+Route::post('admin/showPayScheme', 'AdminController@showPayScheme');
 //end edmin

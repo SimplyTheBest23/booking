@@ -121,9 +121,18 @@ function filter(page) {
                 list += feed.author_name;
                 list += '<br>'
                 list += feed.author_phone;
-                list += '</td><td>'
+                list += '</td><td class="comment"><p>'
+                if (feed.reight > 0){
+                    list += '<span class="plus"></span>';
+                }
+                if (feed.reight < 0){
+                    list += '<span class="minus"></span>';
+                }
+                if (feed.reight == 0){
+                    list += '<span class="re"></span>';
+                }
                 list += feed.comment;
-                list += '</td><td>'
+                list += '</p></td><td>'
                 if (feed.status == 0){
                     list += 'блокований';
                 }

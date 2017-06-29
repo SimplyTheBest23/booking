@@ -31,7 +31,7 @@
 			</textarea>
             <div class="row">
                 <div class="col-md-4">
-		             <label for="create_date">Дата создания</label><input type="date" class="form-control" id="create_date" name="create_date">
+		             <label for="create_date">Дата створення</label><input type="date" class="form-control" id="create_date" name="create_date">
                      <label for="date_up">Дата оновлення</label><input type="date" class="form-control" id="date_up" name="date_up">
 		             <label for="date_out">Дата закінчення</label><input type="date" class="form-control" id="date_out" name="date_out">
 			         <label for="date_pay">Дата платного</label><input type="date" class="form-control" id="date_pay" name="date_pay">
@@ -151,7 +151,7 @@
 <!-- end modal rooms -->
 
 
-<h1 class="h3">Объявления</h1>
+<h1 class="h3">Оголошення</h1>
 <table class="table table-striped" id="add_list">
 	<tbody>
 		@foreach ($hotels as $hotel)
@@ -165,18 +165,18 @@
 						<td>бесплатное</td>
 					@endif
 					<td>
-						<button class="btn btn-xs btn-success">поднять</button>
-						<button class="btn btn-xs btn-danger" id="del{{$hotel->id}}">удалить</button>
-						<button class="btn btn-xs btn-success">продлить</button>
+						<button class="btn btn-xs btn-success">підняти</button>
+						<button class="btn btn-xs btn-danger" id="del{{$hotel->id}}">видалити</button>
+						<button class="btn btn-xs btn-success">подовжити</button>
 						<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#editModal" id="edit{{$hotel->id}}">
-							редактировать
+							редагувати
 						</button>
-						<a class="btn btn-xs btn-info" href="{{asset('hotel/'.$hotel->id)}}">просмотреть</a>
+						<a class="btn btn-xs btn-info" href="{{asset('hotel/'.$hotel->id)}}">переглянути</a>
 						<button class="btn btn-xs btn-success">VIP</button>
 						<button class="btn btn-xs btn-success">TOP</button>
-						<button class="btn btn-xs btn-success">Сделать платным</button>
+						<button class="btn btn-xs btn-success">Зробити платним</button>
 						<button class="btn btn-xs btn-info" data-toggle="modal" data-target="#roomsModal" id="rooms{{$hotel->id}}">
-							комнаты
+							кімнати
 						</button>
 					</td>
 				</tr>
@@ -185,10 +185,10 @@
 	<thead>
 		<tr>
 			<th>№</th>
-			<th>Название</th>
+			<th>Назва</th>
 			<th>Телефон</th>
-			<th>Платное</th>
-			<th>Действия</th>
+			<th>Платне</th>
+			<th>Дії</th>
 		</tr>
 	</thead>
 </table>

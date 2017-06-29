@@ -21,6 +21,8 @@ use Svityaz\Models\visit;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Svityaz\Models\paidScheme;
+use Svityaz\Models\paidType;
 
 class MainController extends Controller
 {
@@ -398,8 +400,11 @@ class MainController extends Controller
     public function testGet()
     {
         echo 'start... <br>';
-        $list = feed::list(1);
-        var_dump($list);
+        $s = paidScheme::get();
+        for ($i=0; $i < count($s) ; $i++) {
+            //$s[$i]->type = $s[$i]->type()->type;
+            var_dump($s[$i]->type->type);
+        }
 
     }
 }

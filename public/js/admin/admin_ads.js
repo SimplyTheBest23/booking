@@ -40,19 +40,19 @@ function adds_filter(){// tested
 				list += '<td>'+hotel.id+'</td>';
 			    list += '<td>'+hotel.title+'</td>';
 			    list += '<td>'+hotel.phone+'</td>';
-				list += '<td>бесплатное</td>';
+				list += '<td>бекоштовне</td>';
 				list += '<td>';
-			    list += '<button class="btn btn-xs btn-success">поднять</button> ';
-				list += '<button class="btn btn-xs btn-danger" id="del'+hotel.id+'">удалить</button> ';
-				list += '<button class="btn btn-xs btn-success">продлить</button> ';
+			    list += '<button class="btn btn-xs btn-success">піднять</button> ';
+				list += '<button class="btn btn-xs btn-danger" id="del'+hotel.id+'">видалити</button> ';
+				list += '<button class="btn btn-xs btn-success">продовжити</button> ';
 				list += '<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#editModal" id="edit'+hotel.id+'">';
-				list += 'редактировать</button> ';
-				list += '<a class="btn btn-xs btn-info" href="hotel/'+hotel.id+'">просмотреть</a> ';
+				list += 'редагувати</button> ';
+				list += '<a class="btn btn-xs btn-info" href="hotel/'+hotel.id+'">переглянути</a> ';
 				list += '<button class="btn btn-xs btn-success">VIP</button> ';
 				list += '<button class="btn btn-xs btn-success">TOP</button> ';
-				list += '<button class="btn btn-xs btn-success">Сделать платным</button> ';
+				list += '<button class="btn btn-xs btn-success">Зробити платним</button> ';
 				list += '<button class="btn btn-xs btn-info" data-toggle="modal" data-target="#roomsModal" id="rooms'+hotel.id+'">';
-				list += 'комнаты	</button></td></tr>';
+				list += 'кімнати</button></td></tr>';
             }
 			$('#add_list tbody').html(list);
 			add_click();
@@ -85,7 +85,7 @@ function add_click(){
                 url: baseUrl+'hotel/'+id,
                 type:'DELETE',
                 success: function(data){
-                    setAlert('Удаление', 'объявление № '+id+' удалено', 'alert-success');
+                    setAlert('Видалення', 'оголошення № '+id+' видалене', 'alert-success');
                     adds_filter();
                 }
             });
@@ -209,9 +209,9 @@ function room_click(){// tested
                     console.log(info);
                     if (info == '0'){
                         adds_filter($('#filter').val());
-                        setAlert('Сохранение', 'номер № '+$('#edit_room_id').val()+' сохранён', 'alert-success');
+                        setAlert('Збереження', 'номер № '+$('#edit_room_id').val()+' збережений', 'alert-success');
                     } else{
-                        setAlert('Ошибка сохранения', info, 'alert-danger');
+                        setAlert('Помилка збереження', info, 'alert-danger');
                     }
         		}
         	});
@@ -369,9 +369,9 @@ $('#save_but').click(function(){// tested
                 console.log(info);
                 if (info == '0'){
                     adds_filter($('#filter').val());
-                    setAlert('Сохранение', 'объявления № '+$('#edit_id').val()+' прошло успешно', 'alert-success');
+                    setAlert('Збереження', 'оголошення № '+$('#edit_id').val()+' збережено', 'alert-success');
                 } else{
-                    setAlert('Ошибка сохранения', info, 'alert-danger');
+                    setAlert('Помилка збереження', info, 'alert-danger');
                 }
     		}
     	});
